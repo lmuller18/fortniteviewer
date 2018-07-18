@@ -1,0 +1,21 @@
+.card-container {
+  margin: 2rem 0;
+
+  img {
+    display: block;
+    margin: auto;
+  }
+
+  mat-card {
+    background: linear-gradient(to right, #8e24aa, #b867c6);
+  }
+  // images from api have transparent bottom padding
+  p {
+    margin-top: -3rem;
+  }
+
+  .news-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}

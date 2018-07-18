@@ -1,0 +1,17 @@
+<div class="content">
+  <ng-container *ngFor="let entry of news">
+    <div class="card-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <span class="news-title">{{ entry.title }}</span>
+          </mat-card-title>
+        </mat-card-header>
+        <img [src]="entry.image">
+        <mat-card-content>
+          <p>{{ entry.body }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+</div>

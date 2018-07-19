@@ -1,116 +1,57 @@
 {
-  "type": "battleroyale",
-  "typesm": "br",
-  "entries": [
+  "common": {
+    "image":
+      "https://cdn2.unrealengine.com/Fortnite/RUS-Axe-1921x1082-fb41e51e9a280b9752b42e2b94b31e34d5758870.png",
+    "_type": "CommonUI Simple Message Base",
+    "title": "Test",
+    "body": "Test"
+  },
+  "br": [
     {
-      "title": "Make Your Mark",
-      "body": "The Abstrakt and Raptor Outfits are in the Item Shop now!",
       "image":
-        "https://fortnite-public-files.theapinetwork.com/2d8c3755fc4f5ac7ca09839b7b774659.png",
-      "time": "1531872241"
-    },
-    {
+        "https://cdn2.unrealengine.com/Fortnite/fortnite-game/battleroyalenews/v50+HF/BR05_MOTD_SubmachineGun-256x256-5ae21909ae7ad096235814e5b09a7f949033526c.png",
+      "hidden": false,
+      "_type": "CommonUI Simple Message Base",
       "title": "Submachine Gun - Available Now!",
       "body":
-        "New standard SMG with a fast rate of fire and reduced accuracy penalty while moving.",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/282ead73f80ffedab6765a8ce1c40f20.png",
-      "time": "1531847761"
+        "New standard SMG with a fast rate of fire and reduced accuracy penalty while moving."
     },
     {
+      "image":
+        "https://cdn2.unrealengine.com/Fortnite/fortnite-game/battleroyalenews/v50+HF/BR05_MOTD_StWSale-256x256-de746d67b8727e0023c831790026a96d65f4e63a.png",
+      "hidden": false,
+      "_type": "CommonUI Simple Message Base",
       "title": "Save the World 50% OFF!",
       "body":
-        "Push back the storm in this four-player co-op PVE campaign! Build forts, craft weapons, and level-up your Heroes.",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/d5b5e684e7e1c141800117d0500806f4.png",
-      "time": "1531847760"
+        "Push back the storm in this four-player co-op PVE campaign! Build forts, craft weapons, and level-up your Heroes."
     },
     {
-      "title": "Stay Fly",
-      "body": "Flytrap and Fortnite Fever Gear in the Item Shop now!",
       "image":
-        "https://fortnite-public-files.theapinetwork.com/fd028a963100b7a1aea11db9dd05ac01.png",
-      "time": "1531786020"
+        "https://cdn2.unrealengine.com/Fortnite/fortnite-game/battleroyalenews/v50+HF/BR05_MOTD_Omen-256x256-9811691a2a1658969aed137e055ada126d5c0b36.png",
+      "hidden": false,
+      "_type": "CommonUI Simple Message Base",
+      "title": "Oversee Your Victory",
+      "body": "The Omen Outfit and Oracle Axe Pickaxe are in the Item Shop now!"
     },
     {
-      "title": "Submachine Gun - Coming Soon!",
-      "body": "New SMG weapon with a fast rate of fire and improved mobility.",
       "image":
-        "https://fortnite-public-files.theapinetwork.com/282ead73f80ffedab6765a8ce1c40f20.png",
-      "time": "1531786020"
-    },
-    {
-      "title": "Conquer The Storm",
-      "body": "New Magnus Outfit and Forebearer Pickaxe available now!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/29569ab9d248d26bf20f8d4fbff9ba4e.png",
-      "time": "1531613041"
-    },
-    {
-      "title": "On The Edge",
-      "body": "New Moniker Outfit and Sharp Style Gear available now!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/91ade353fb241be0fad8785c98b06b96.png",
-      "time": "1531440061"
-    },
-    {
-      "title": "On The Edge",
-      "body": "New Moniker Outfit and Sharp Style Gear available now!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/91ade353fb241be0fad8785c98b06b96.png",
-      "time": "1531440060"
-    },
-    {
+        "https://cdn2.unrealengine.com/Fortnite/fortnite-game/battleroyalenews/v50/BR04_MOTD_Season5Battlepass-256x256-8077ee7280a5607b29c1c6c8b69204b4c1a33afb.png",
+      "hidden": false,
+      "_type": "CommonUI Simple Message Base",
       "title": "Season 5 Battle Pass",
       "body":
-        "100 tiers. Over 100 rewards. New toys, outfits, gliders, pickaxes, emotes, and more! Available now for 950 V-Bucks! ",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/4505c3130916970c874b48dc8ab2f2cb.png",
-      "time": "1531388101"
-    },
-    {
-      "title": "Season 5 Is Here!",
-      "body":
-        "Viking ships, desert outposts, and ancient statues have appeared across the island. Hop into an ATK and uncover all new locations!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/4c0894ddc8bc2d76ff3cf0c4784b8c8c.png",
-      "time": "1531388101"
-    },
-    {
-      "title": "Toying Around",
-      "body":
-        "Challenge your friends to a game of golf or basketball with toys, available only in the Battle Pass!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/3bb5e0dd9db27efa83d653f04ec65aec.png",
-      "time": "1531388100"
-    },
-    {
-      "title": "Venture And Victory",
-      "body": "Venture and Goalbound Gear sets are in the shop now!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/cc7b82ff95a312d64b749848b83a373c.png",
-      "time": "1531353960"
-    },
-    {
-      "title": "Worlds Collide",
-      "body": "Season 5 starts tomorrow!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/d270376d0709eddd1de1b7eccf8728cb.png",
-      "time": "1531318621"
-    },
-    {
-      "title": "Playground LTM - Last Day!",
-      "body": "Let your creativity run wild on your own private island!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/e88ed047b8f7766b02215acd16e4c454.png",
-      "time": "1531318620"
-    },
-    {
-      "title": "From The Shadows",
-      "body": "Nevermore and Jailbird Gear sets are in the shop now!",
-      "image":
-        "https://fortnite-public-files.theapinetwork.com/aa04dc7363d26f4677c508f7d2b6cf08.png",
-      "time": "1531267741"
+        "100 tiers. Over 100 rewards. New toys, outfits, gliders, pickaxes, emotes, and more! Available now for 950 V-Bucks! "
     }
-  ]
+  ],
+  "loginmessage": {
+    "_type": "CommonUI Simple Message Base",
+    "title": "",
+    "body": ""
+  },
+  "survivalmessage": {
+    "_type": "CommonUI Simple Message Base",
+    "title": "The Survive the Storm event is now live!",
+    "body":
+      "Take the pledge:\nSelect a target survival time of 3 or 7 nights.\n\nSend Feedback:\nSurvive the Storm is still in development. We’d love to hear what you think."
+  }
 }

@@ -2,12 +2,12 @@
   <mat-sidenav #snav>
     <mat-nav-list>
       <a mat-list-item
-         routerLink=".">
-        Test 1
+         routerLink="/news">
+        News
       </a>
       <a mat-list-item
-         routerLink=".">
-        Test 2
+         routerLink="/store">
+        Store
       </a>
       <a mat-list-item
          routerLink=".">
@@ -24,7 +24,8 @@
       <span>Fortnite Viewer</span>
     </mat-toolbar>
     <div class="main-content">
-      <app-news></app-news>
+      <router-outlet></router-outlet>
+      <!-- <app-news></app-news> -->
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

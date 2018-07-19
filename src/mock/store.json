@@ -1,0 +1,177 @@
+{
+  "date_layout": "day-month-year",
+  "date": "19-7-18",
+  "rows": 8,
+  "vbucks":
+    "https://fortnite-public-files.theapinetwork.com/fortnite-vbucks-icon.png",
+  "items": [
+    {
+      "itemid": "ade52ea-cfad2d6-58cc7cb-c52b657",
+      "name": "Oracle Axe",
+      "cost": "1200",
+      "featured": 1,
+      "refundable": 1,
+      "item": {
+        "image":
+          "https://fortnite-public-files.theapinetwork.com/pickaxe/604352575428e45d37cb34c5fd58c74a.png",
+        "images": {
+          "transparent":
+            "https://fortnite-public-files.theapinetwork.com/pickaxe/604352575428e45d37cb34c5fd58c74a.png",
+          "background":
+            "https://fortnite-public-files.theapinetwork.com/image/ade52ea-cfad2d6-58cc7cb-c52b657.png"
+        },
+        "captial": "pickaxe",
+        "type": "pickaxe",
+        "rarity": "epic",
+        "obtained_type": "vbucks"
+      }
+    },
+    {
+      "itemid": "a7e34ae-f8e4a8c-3a73a72-6d4c2c3",
+      "name": "Omen",
+      "cost": "2000",
+      "featured": 1,
+      "refundable": 1,
+      "item": {
+        "image":
+          "https://fortnite-public-files.theapinetwork.com/outfit/0d7933857dff18f34bee5f77b814ae73.png",
+        "images": {
+          "transparent":
+            "https://fortnite-public-files.theapinetwork.com/outfit/0d7933857dff18f34bee5f77b814ae73.png",
+          "background":
+            "https://fortnite-public-files.theapinetwork.com/image/a7e34ae-f8e4a8c-3a73a72-6d4c2c3.png"
+        },
+        "captial": "outfit",
+        "type": "outfit",
+        "rarity": "legendary",
+        "obtained_type": "vbucks"
+      }
+    },
+    {
+      "itemid": "446ee1c-fd8ebb2-5f5e428-e3f1979",
+      "name": "Googly",
+      "cost": "800",
+      "featured": 0,
+      "refundable": 1,
+      "item": {
+        "image":
+          "https://fortnite-public-files.theapinetwork.com/glider/3de5277f7b372a97be4aca805ff8e2db.png",
+        "images": {
+          "transparent":
+            "https://fortnite-public-files.theapinetwork.com/glider/3de5277f7b372a97be4aca805ff8e2db.png",
+          "background":
+            "https://fortnite-public-files.theapinetwork.com/image/446ee1c-fd8ebb2-5f5e428-e3f1979.png"
+        },
+        "captial": "glider",
+        "type": "glider",
+        "rarity": "rare",
+        "obtained_type": "vbucks"
+      }
+    },
+    {
+      "itemid": "7ee398d-4aa8de4-3aa1e2b-8682154",
+      "name": "Trooper",
+      "cost": "800",
+      "featured": 0,
+      "refundable": 1,
+      "item": {
+        "image":
+          "https://fortnite-public-files.theapinetwork.com/outfit/4db93cce87e35b47f3b59b51adf97685.png",
+        "images": {
+          "transparent":
+            "https://fortnite-public-files.theapinetwork.com/outfit/4db93cce87e35b47f3b59b51adf97685.png",
+          "background":
+            "https://fortnite-public-files.theapinetwork.com/image/7ee398d-4aa8de4-3aa1e2b-8682154.png"
+        },
+        "captial": "outfit",
+        "type": "outfit",
+        "rarity": "uncommon",
+        "obtained_type": "vbucks"
+      }
+    },
+    {
+      "itemid": "3f9929b-c2133a6-422f0f1-e57cec7",
+      "name": "Death Valley",
+      "cost": "1500",
+      "featured": 0,
+      "refundable": 1,
+      "item": {
+        "image":
+          "https://fortnite-public-files.theapinetwork.com/pickaxe/483f0b12aee0e6b30467bd5c8d2ab27a.png",
+        "images": {
+          "transparent":
+            "https://fortnite-public-files.theapinetwork.com/pickaxe/483f0b12aee0e6b30467bd5c8d2ab27a.png",
+          "background":
+            "https://fortnite-public-files.theapinetwork.com/image/3f9929b-c2133a6-422f0f1-e57cec7.png"
+        },
+        "captial": "pickaxe",
+        "type": "pickaxe",
+        "rarity": "epic",
+        "obtained_type": "vbucks"
+      }
+    },
+    {
+      "itemid": "e7a4033-bc75359-49d5f26-4f3adba",
+      "name": "Red Card",
+      "cost": "200",
+      "featured": 0,
+      "refundable": 1,
+      "item": {
+        "image":
+          "https://fortnite-public-files.theapinetwork.com/emote/ad6abd270d37138867ccd93ff40825a8.png",
+        "images": {
+          "transparent":
+            "https://fortnite-public-files.theapinetwork.com/emote/ad6abd270d37138867ccd93ff40825a8.png",
+          "background":
+            "https://fortnite-public-files.theapinetwork.com/image/e7a4033-bc75359-49d5f26-4f3adba.png"
+        },
+        "captial": "emote",
+        "type": "emote",
+        "rarity": "uncommon",
+        "obtained_type": "vbucks"
+      }
+    },
+    {
+      "itemid": "cab199d-b326395-0c1a1d8-e1cf251",
+      "name": "Infinite Dab",
+      "cost": "500",
+      "featured": 0,
+      "refundable": 1,
+      "item": {
+        "image":
+          "https://fortnite-public-files.theapinetwork.com/emote/67fd843a12723036bdcd3a0eebdd2e92.png",
+        "images": {
+          "transparent":
+            "https://fortnite-public-files.theapinetwork.com/emote/67fd843a12723036bdcd3a0eebdd2e92.png",
+          "background":
+            "https://fortnite-public-files.theapinetwork.com/image/cab199d-b326395-0c1a1d8-e1cf251.png"
+        },
+        "captial": "emote",
+        "type": "emote",
+        "rarity": "rare",
+        "obtained_type": "vbucks"
+      }
+    },
+    {
+      "itemid": "021a449-06ab9b0-951be0c-ae26096",
+      "name": "Highland Warrior",
+      "cost": "1500",
+      "featured": 0,
+      "refundable": 1,
+      "item": {
+        "image":
+          "https://fortnite-public-files.theapinetwork.com/outfit/d700adea161010d917eec6804cd2904c.png",
+        "images": {
+          "transparent":
+            "https://fortnite-public-files.theapinetwork.com/outfit/d700adea161010d917eec6804cd2904c.png",
+          "background":
+            "https://fortnite-public-files.theapinetwork.com/image/021a449-06ab9b0-951be0c-ae26096.png"
+        },
+        "captial": "outfit",
+        "type": "outfit",
+        "rarity": "epic",
+        "obtained_type": "vbucks"
+      }
+    }
+  ]
+}

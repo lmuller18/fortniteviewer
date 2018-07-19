@@ -1,0 +1,17 @@
+<div class="content">
+  <ng-container *ngFor="let item of store">
+    <div class="card-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <span class="store-title">{{ item.name }}</span>
+          </mat-card-title>
+        </mat-card-header>
+        <img [src]="item.item.images.background">
+        <mat-card-content>
+          <p>{{ item.cost }}BP</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+</div>

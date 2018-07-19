@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewsComponent } from './news.component';
+import { StoreComponent } from './store.component';
 import {
   MatButtonModule,
   MatIconModule,
@@ -8,7 +8,7 @@ import {
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 
-export const ROUTES: Routes = [{ path: 'news', component: NewsComponent }];
+export const ROUTES: Routes = [{ path: 'store', component: StoreComponent }];
 @NgModule({
   imports: [
     RouterModule.forChild(ROUTES),
@@ -17,7 +17,7 @@ export const ROUTES: Routes = [{ path: 'news', component: NewsComponent }];
     MatCardModule,
     MatIconModule
   ],
-  declarations: [NewsComponent],
-  exports: [NewsComponent]
+  declarations: [StoreComponent],
+  exports: [StoreComponent]
 })
-export class NewsModule {}
+export class StoreModule {}

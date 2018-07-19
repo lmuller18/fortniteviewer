@@ -10,6 +10,6 @@ export class NewsComponent {
   news: any[];
 
   constructor() {
-    this.news = (<any>news).entries;
+    this.news = (<any>news).br;
   }
 }

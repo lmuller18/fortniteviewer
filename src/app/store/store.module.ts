@@ -4,9 +4,11 @@ import { StoreComponent } from './store.component';
 import {
   MatButtonModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 export const ROUTES: Routes = [{ path: 'store', component: StoreComponent }];
 @NgModule({
@@ -15,7 +17,9 @@ export const ROUTES: Routes = [{ path: 'store', component: StoreComponent }];
     CommonModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
   declarations: [StoreComponent],
   exports: [StoreComponent]

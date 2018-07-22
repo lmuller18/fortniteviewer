@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewsComponent } from './news.component';
+import { ChallengesComponent } from './challenges.component';
 import {
   MatButtonModule,
   MatIconModule,
   MatCardModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatExpansionModule,
+  MatListModule
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-export const ROUTES: Routes = [{ path: 'news', component: NewsComponent }];
+export const ROUTES: Routes = [
+  { path: 'challenges', component: ChallengesComponent }
+];
 @NgModule({
   imports: [
     RouterModule.forChild(ROUTES),
@@ -19,9 +23,11 @@ export const ROUTES: Routes = [{ path: 'news', component: NewsComponent }];
     MatCardModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatListModule,
     HttpClientModule
   ],
-  declarations: [NewsComponent],
-  exports: [NewsComponent]
+  declarations: [ChallengesComponent],
+  exports: [ChallengesComponent]
 })
-export class NewsModule {}
+export class ChallengesModule {}

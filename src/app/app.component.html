@@ -1,6 +1,6 @@
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container>
   <mat-sidenav #snav>
-    <mat-nav-list>
+    <mat-nav-list (click)="snav.close()">
       <a mat-list-item
          routerLink="/news">
         News
@@ -10,8 +10,8 @@
         Store
       </a>
       <a mat-list-item
-         routerLink=".">
-        Test 3
+         routerLink="/challenges">
+        Challenges
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -25,7 +25,6 @@
     </mat-toolbar>
     <div class="main-content">
       <router-outlet></router-outlet>
-      <!-- <app-news></app-news> -->
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

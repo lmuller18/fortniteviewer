@@ -1,4 +1,10 @@
-<div class="content">
+<div class="loader"
+     *ngIf="loading">
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+
+<div class="content"
+     *ngIf="!loading && news">
   <ng-container *ngFor="let entry of news">
     <div class="card-container">
       <mat-card>

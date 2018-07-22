@@ -1,16 +1,25 @@
-<div class="content">
+<div class="loader"
+     *ngIf="loading">
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+<div class="content"
+     *ngIf="!loading && store">
   <ng-container *ngFor="let item of store">
     <div class="card-container">
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            <span class="store-title">{{ item.name }}</span>
-          </mat-card-title>
-        </mat-card-header>
-        <img [src]="item.item.images.background">
-        <mat-card-content>
-          <p>{{ item.cost }}BP</p>
-        </mat-card-content>
+        <div class="container">
+          <img [src]="item.item.images.background">
+          <div class="overlay">
+            <div class="info-container">
+              <div class="title-container">
+                <span class="store-title">{{ item.name }}</span>
+              </div>
+              <div class="price-container">
+                <img [src]="vbucks"> {{item.cost}}
+              </div>
+            </div>
+          </div>
+        </div>
       </mat-card>
     </div>
   </ng-container>

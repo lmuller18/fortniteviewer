@@ -2,7 +2,21 @@
   background-color: unset !important;
 }
 
+.mat-drawer.mat-sidenav {
+  width: 75vw;
+}
+
 .main-content {
   padding: 30px;
-  padding-top: 0;
+  overflow: auto;
+  min-height: 95vh;
+  max-height: 100%;
+}
+
+.mat-toolbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9;
 }

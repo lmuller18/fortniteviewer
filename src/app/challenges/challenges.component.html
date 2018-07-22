@@ -1,0 +1,31 @@
+<div class="loader"
+     *ngIf="loading">
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+
+<div class="content"
+     *ngIf="!loading && challenges">
+  <mat-accordion>
+    <ng-container *ngFor="let week of challenges">
+      <mat-expansion-panel [expanded]="week.current">
+        <mat-expansion-panel-header>
+          {{week.key}}
+        </mat-expansion-panel-header>
+        <mat-selection-list #challenges>
+          <mat-list-option *ngFor="let challenge of week.value">
+            <h3 matLine>{{challenge.challenge}}</h3>
+            <p matLine>0/{{challenge.total}}</p>
+            <p matLine>{{challenge.stars}}
+              <img height="20px"
+                   src="https://fortnite-public-files.theapinetwork.com/fortnite-br-challenges-star.png">
+            </p>
+          </mat-list-option>
+        </mat-selection-list>
+
+        <p>
+          Options selected: {{challenges.selectedOptions.selected.length}}
+        </p>
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+</div>

@@ -17,6 +17,7 @@ import {
 
 import { NewsModule } from './news/news.module';
 import { StoreModule } from './store/store.module';
+import { ChallengesModule } from './challenges/challenges.module';
 
 const routes: Routes = [
   {
@@ -40,7 +41,8 @@ const routes: Routes = [
       enabled: environment.production
     }),
     NewsModule,
-    StoreModule
+    StoreModule,
+    ChallengesModule
   ],
   exports: [RouterModule],
   providers: [],

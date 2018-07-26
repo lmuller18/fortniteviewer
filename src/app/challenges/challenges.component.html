@@ -6,25 +6,48 @@
 <div class="content"
      *ngIf="!loading && challenges">
   <mat-accordion>
-    <ng-container *ngFor="let week of challenges">
-      <mat-expansion-panel [expanded]="week.current">
+    <ng-container *ngFor="let week of challenges; let i = index">
+      <mat-expansion-panel [hideToggle]="true"
+                           [expanded]="week.current">
         <mat-expansion-panel-header>
-          {{week.key}}
+          <div class="week-title">
+            <span>Week {{ i + 1 }}</span>
+            <div class="challenges-completed">{{challenges.selectedOptions.selected.length}}/7</div>
+          </div>
         </mat-expansion-panel-header>
         <mat-selection-list #challenges>
-          <mat-list-option *ngFor="let challenge of week.value">
-            <h3 matLine>{{challenge.challenge}}</h3>
-            <p matLine>0/{{challenge.total}}</p>
-            <p matLine>{{challenge.stars}}
-              <img height="20px"
-                   src="https://fortnite-public-files.theapinetwork.com/fortnite-br-challenges-star.png">
-            </p>
-          </mat-list-option>
-        </mat-selection-list>
+          <ng-container *ngFor="let challenge of week.value">
+            <mat-list-option class="mat-list-item-word-wrap"
+                             #check
+                             [selected]="progress.value === challenge.total">
+              <h3 class="challenge-title"
+                  matLine>{{challenge.challenge}}</h3>
 
+              <p matLine>{{challenge.stars}}
+                <img height="20px"
+                     src="../../assets/img/star.png">
+              </p>
+            </mat-list-option>
+            <div class="progress-container">
+              <mat-slider #progress
+                          matLine
+                          [color]="'primary'"
+                          class="progress"
+                          [value]="check.selected ? challenge.total : progress.value"
+                          [max]="challenge.total"
+                          [step]="1"
+                          [thumbLabel]="true">
+              </mat-slider>
+              <div class="challenge-progress">{{progress.value}}/{{challenge.total}}</div>
+
+            </div>
+
+          </ng-container>
+        </mat-selection-list>
+        <!--
         <p>
-          Options selected: {{challenges.selectedOptions.selected.length}}
-        </p>
+          Challenges Completed:
+        </p> -->
       </mat-expansion-panel>
     </ng-container>
   </mat-accordion>

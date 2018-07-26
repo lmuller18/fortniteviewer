@@ -1,0 +1,16 @@
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form > * {
+  width: 100%;
+}
+
+.search-form-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin-top: 50%;
+}

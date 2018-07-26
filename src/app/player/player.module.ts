@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChallengesComponent } from './challenges.component';
+import { PlayerComponent } from './player.component';
 import {
   MatButtonModule,
   MatIconModule,
   MatCardModule,
   MatProgressSpinnerModule,
-  MatExpansionModule,
-  MatListModule,
-  MatSliderModule
+  MatTabsModule,
+  MatGridListModule
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 export const ROUTES: Routes = [
-  { path: 'challenges', component: ChallengesComponent }
+  { path: 'player/:platform/:username', component: PlayerComponent }
 ];
 @NgModule({
   imports: [
@@ -23,13 +22,12 @@ export const ROUTES: Routes = [
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatTabsModule,
     MatProgressSpinnerModule,
-    MatExpansionModule,
-    MatListModule,
-    MatSliderModule,
+    MatGridListModule,
     HttpClientModule
   ],
-  declarations: [ChallengesComponent],
-  exports: [ChallengesComponent]
+  declarations: [PlayerComponent],
+  exports: [PlayerComponent]
 })
-export class ChallengesModule {}
+export class PlayerModule {}

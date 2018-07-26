@@ -18,6 +18,8 @@ import {
 import { NewsModule } from './news/news.module';
 import { StoreModule } from './store/store.module';
 import { ChallengesModule } from './challenges/challenges.module';
+import { PlayerModule } from './player/player.module';
+import { SearchModule } from './search/search.module';
 
 const routes: Routes = [
   {
@@ -42,7 +44,9 @@ const routes: Routes = [
     }),
     NewsModule,
     StoreModule,
-    ChallengesModule
+    ChallengesModule,
+    PlayerModule,
+    SearchModule
   ],
   exports: [RouterModule],
   providers: [],

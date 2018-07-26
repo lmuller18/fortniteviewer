@@ -9,3 +9,60 @@
 .content {
   margin-top: 30px;
 }
+
+.challenge-progress {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.progress {
+  width: 80%;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: start;
+}
+
+/* SCSS */
+.mat-list-item.mat-list-item-word-wrap {
+  height: initial !important;
+  .mat-line {
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+  }
+}
+
+.mat-expansion-panel {
+  margin-bottom: 0;
+  margin-top: 8px;
+  background: linear-gradient(to right, #8e24aa, #b867c6) !important;
+}
+
+.mat-expansion-panel-header,
+.mat-expansion-panel-header.mat-expanded {
+  background: linear-gradient(to right, #8e24aa, #b867c6) !important;
+}
+
+.week-title {
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+  font-size: 35px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.challenges-completed {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.challenge-title {
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+  font-size: 12px;
+}

@@ -4,10 +4,13 @@
 
 .mat-drawer.mat-sidenav {
   width: 75vw;
+  height: 100vh;
+  position: fixed;
 }
 
 .main-content {
   padding: 30px;
+  padding-top: 53px;
   overflow: auto;
   min-height: 95vh;
   max-height: 100%;
@@ -19,4 +22,41 @@
   right: 0;
   left: 0;
   z-index: 9;
+}
+
+.side-nav-item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+  font-size: 30px;
+}
+
+.side-nav {
+  background-color: #673ab7;
+}
+
+.bottom-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: auto; /* to keep proportions */
+  height: auto; /* to keep proportions */
+  max-width: 100%; /* not to stand out from div */
+  max-height: 40%; /* not to stand out from div */
+  margin: auto auto 0; /* position to bottom and center */
+  object-fit: cover;
+}
+
+.banner {
+  max-height: 200px;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: 50% 20%;
 }

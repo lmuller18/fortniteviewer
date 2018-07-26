@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.component.html',
@@ -29,7 +28,7 @@ export class ChallengesComponent implements OnInit {
           }
 
           let found = false;
-          let index = 0;
+          let index = 9;
           keys.forEach((key, i) => {
             if (key.value.length === 0 && !found) {
               found = true;

@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 export class StoreComponent implements OnInit {
   response: any;
   store: any[];
-  vbucks: string;
   loading = true;
 
   constructor(private http: HttpClient) {}
@@ -23,7 +22,6 @@ export class StoreComponent implements OnInit {
       data => {
         this.response = data;
         this.store = this.response.items;
-        this.vbucks = this.response.vbucks;
         this.loading = false;
       },
       err => console.log(err),

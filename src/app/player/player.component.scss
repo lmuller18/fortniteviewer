@@ -1,0 +1,20 @@
+.player-tabs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: auto; /* to keep proportions */
+  height: auto; /* to keep proportions */
+  max-width: 100%; /* not to stand out from div */
+  max-height: 100%; /* not to stand out from div */
+  margin: auto auto 0; /* position to bottom and center */
+}
+
+.loader {
+  height: 90vh;
+  mat-progress-spinner {
+    top: 40%;
+    margin: auto;
+  }
+}

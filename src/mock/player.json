@@ -1,0 +1,77 @@
+{
+  "group": {
+    "solo": {
+      "wins": 0,
+      "top3": 0,
+      "top5": 0,
+      "top6": 0,
+      "top10": 1,
+      "top12": 0,
+      "top25": 5,
+      "k/d": "0.74",
+      "win%": "0.00",
+      "matches": 34,
+      "kills": 25,
+      "timePlayed": "0m",
+      "killsPerMatch": "0.74",
+      "killsPerMin": 0,
+      "score": 3354
+    },
+    "duo": {
+      "wins": 0,
+      "top3": 0,
+      "top5": 0,
+      "top6": 0,
+      "top10": 0,
+      "top12": 5,
+      "top25": 0,
+      "k/d": "0.71",
+      "win%": "0.00",
+      "matches": 45,
+      "kills": 32,
+      "timePlayed": "0m",
+      "killsPerMatch": "0.71",
+      "killsPerMin": 0,
+      "score": 4689
+    },
+    "squad": {
+      "wins": 0,
+      "top3": 0,
+      "top5": 0,
+      "top6": 1,
+      "top10": 0,
+      "top12": 0,
+      "top25": 0,
+      "k/d": "0.50",
+      "win%": "0.00",
+      "matches": 20,
+      "kills": 10,
+      "timePlayed": "0m",
+      "killsPerMatch": "0.50",
+      "killsPerMin": 0,
+      "score": 2136
+    }
+  },
+  "info": {
+    "accountId": "75019e98d0c54e7890ef43f8b9e6e4ac",
+    "username": "comanderguy",
+    "platform": "pc"
+  },
+  "lifetimeStats": {
+    "wins": 0,
+    "top3s": 0,
+    "top5s": 0,
+    "top6s": 1,
+    "top10s": 1,
+    "top12s": 5,
+    "top25s": 5,
+    "k/d": "0.68",
+    "win%": "0.00",
+    "matches": 99,
+    "kills": 67,
+    "killsPerMin": 0,
+    "timePlayed": "0m",
+    "score": 10179,
+    "killsPerMatch": "0.68"
+  }
+}

@@ -1,19 +1,42 @@
 <mat-sidenav-container>
-  <mat-sidenav #snav>
+  <mat-sidenav class="side-nav"
+               #snav>
+    <img class="banner"
+         src="../assets/img/fortnite.jpg"
+         width="100%">
     <mat-nav-list (click)="snav.close()">
       <a mat-list-item
          routerLink="/news">
-        News
+        <div class="side-nav-item">
+          <mat-icon>featured_play_list</mat-icon>
+          <span>News</span>
+        </div>
       </a>
       <a mat-list-item
          routerLink="/store">
-        Store
+        <div class="side-nav-item">
+          <mat-icon>store_mall_directory</mat-icon>
+          <span>Store</span>
+        </div>
       </a>
       <a mat-list-item
          routerLink="/challenges">
-        Challenges
+        <div class="side-nav-item">
+          <mat-icon svgIcon="trophy"></mat-icon>
+          <span>Challenges</span>
+        </div>
+      </a>
+      <a mat-list-item
+         routerLink="/search">
+        <div class="side-nav-item">
+          <mat-icon>search</mat-icon>
+          <span>Search</span>
+        </div>
       </a>
     </mat-nav-list>
+    <img class="bottom-img"
+         src="../assets/img/drift.png"
+         width="100%">
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar [color]="'primary'">
@@ -28,3 +51,9 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<!--
+// featured_play_list
+// attach_money
+// local_grocery_store
+// local_offer
+// store_mall_directory -->

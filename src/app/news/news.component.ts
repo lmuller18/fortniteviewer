@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as news from '../../mock/news.json';
 import { HttpClient } from '@angular/common/http';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -12,7 +13,14 @@ export class NewsComponent implements OnInit {
   news: any[];
   loading = true;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        (<any>window).ga('set', 'page', event.urlAfterRedirects);
+        (<any>window).ga('send', 'pageview');
+      }
+    });
+  }
 
   ngOnInit() {
     this.getNews();

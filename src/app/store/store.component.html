@@ -2,7 +2,7 @@
      *ngIf="loading">
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
-<div class="content"
+<div class="main-content"
      *ngIf="!loading && store">
   <ng-container *ngFor="let item of store">
     <div class="card-container">

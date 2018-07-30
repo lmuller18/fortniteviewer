@@ -1,20 +1,57 @@
-.player-tabs {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: auto; /* to keep proportions */
-  height: auto; /* to keep proportions */
-  max-width: 100%; /* not to stand out from div */
-  max-height: 100%; /* not to stand out from div */
-  margin: auto auto 0; /* position to bottom and center */
+::ng-deep .mat-tab-group {
+  margin: 2rem 0 4rem 0 !important;
 }
 
-.loader {
-  height: 90vh;
-  mat-progress-spinner {
-    top: 40%;
-    margin: auto;
-  }
+::ng-deep .mat-tab-header {
+  z-index: 999;
+  width: 100vw;
+  position: fixed !important;
+  bottom: 0;
+}
+
+mat-card.mat-card {
+  min-width: 80%;
+}
+
+.player-toolbar {
+  margin-top: 24px;
+  z-index: 999;
+  position: fixed;
+  margin-bottom: 24px;
+}
+
+.victory-royale-container {
+  position: absolute;
+  top: 24px;
+  width: 100%;
+}
+
+.victory-royale-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.victory-royale-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #29292923;
+}
+
+.victory-royale-text {
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+  font-size: 35px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

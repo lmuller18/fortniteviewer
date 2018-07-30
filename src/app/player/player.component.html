@@ -3,26 +3,44 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 
-<div *ngIf="!loading">
-  <h1>{{player.username}}</h1>
+<div *ngIf="!loading && error">
+  <app-error [error]="error"></app-error>
+</div>
+
+<div *ngIf="!loading && !error">
   <mat-tab-group mat-stretch-tabs
                  headerPosition="below"
                  [backgroundColor]="'primary'"
-                 class="player-tabs mat-elevation-z4">
+                 class="player-tabs">
     <ng-container *ngFor="let group of groups">
       <mat-tab [label]="group">
-        <mat-grid-list cols="3"
-                       rowHeight="90px">
-          <mat-grid-tile *ngFor="let tile of player[group]; let i = index"
-                         [colspan]="i === 0 ? 3 : 1"
-                         [rowspan]="i === 0 ? 3 : 1">
-            <mat-card>
-              <mat-card-header>
-                <mat-card-title>{{tile.key}}: {{tile.value}}</mat-card-title>
-              </mat-card-header>
-            </mat-card>
-          </mat-grid-tile>
-        </mat-grid-list>
+        <div class="player-tab-content">
+          <mat-grid-list cols="2"
+                         rowHeight="70px">
+            <mat-grid-tile *ngFor="let tile of player[group]; let i = index"
+                           [colspan]="i === 0 ? 2 : 1"
+                           [rowspan]="i === 0 ? 4 : 1">
+
+              <ng-container *ngIf="i === 0; else stat">
+                <div class="victory-royale-container">
+                  <img [src]="player[group].wallpaper"
+                       class="victory-royale-image">
+                  <div class="victory-royale-overlay">
+                    <div class="victory-royale-text">
+                      {{ tile.key | camelCase }}: {{tile.value}}
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+
+              <ng-template #stat>
+                <mat-card>
+                  <p>{{ tile.key | camelCase }}: {{tile.value}}</p>
+                </mat-card>
+              </ng-template>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
       </mat-tab>
     </ng-container>
   </mat-tab-group>

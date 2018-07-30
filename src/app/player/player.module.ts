@@ -11,6 +11,8 @@ import {
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorModule } from '../error/error.module';
+import { CamelCasePipe } from '../camel-case.pipe';
 
 export const ROUTES: Routes = [
   { path: 'player/:platform/:username', component: PlayerComponent }
@@ -25,9 +27,10 @@ export const ROUTES: Routes = [
     MatTabsModule,
     MatProgressSpinnerModule,
     MatGridListModule,
+    ErrorModule,
     HttpClientModule
   ],
-  declarations: [PlayerComponent],
+  declarations: [PlayerComponent, CamelCasePipe],
   exports: [PlayerComponent]
 })
 export class PlayerModule {}

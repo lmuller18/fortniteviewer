@@ -21,13 +21,16 @@ export class PlayerComponent implements OnInit {
     duo: any;
     squad: any;
     username: string;
+    wallpaper: string;
   } = {
     solo: {},
     duo: {},
     squad: {},
-    username: ''
+    username: '',
+    wallpaper: ''
   };
   loading = true;
+  error = false;
 
   groups = ['solo', 'duo', 'squad'];
 
@@ -51,43 +54,39 @@ export class PlayerComponent implements OnInit {
           this.getPlayer(params.get('platform'), params.get('username'))
         )
       )
+      // of(player)
       .subscribe(
-        data => {
-          this.groups.forEach(element => {
+        (data: any) => {
+          console.log(data);
+          console.log(data.group.solo.timePlayed);
+          this.groups.forEach((element, index) => {
             const keys = [];
             for (const key of Object.keys((<any>data).group[element])) {
               keys.push({ key: key, value: (<any>data).group[element][key] });
             }
             this.player[element] = keys;
+            this.player[element].wallpaper = this.getWallpaper(index);
           });
           this.player.username = (<any>data).info.username;
           this.loading = false;
+          console.log(this.player);
         },
-        err => console.log(err),
+        err => {
+          this.error =
+            err.error && err.error.text ? err.error.text : JSON.stringify(err);
+          this.loading = false;
+        },
         () => console.log('done loading player')
       );
-    // .subscribe(fetchedPlayer => (this.player = fetchedPlayer));
   }
 
   getPlayer(platform, username) {
-    /*
-    const fetchedPlayer = {
-      solo: {},
-      duo: {},
-      squad: {}
-    };
-    this.groups.forEach(element => {
-      const keys = [];
-      for (const key of Object.keys((<any>player).group[element])) {
-        keys.push({ key: key, value: (<any>player).group[element][key] });
-      }
-      fetchedPlayer[element] = keys;
-    });
-    return of(fetchedPlayer);
-    */
+    const url = `https://fortniteapi-c5d8e.firebaseapp.com/player?platform=${platform}&username=${username}&season=weekly`;
+    console.log(url);
+    return this.http.get(url);
+  }
 
-    return this.http.get(
-      `https://fortniteapi-c5d8e.firebaseapp.com/player?platform=${platform}&username=${username}&season=weekly`
-    );
+  getWallpaper(i) {
+    return `../../assets/img/wallpaper${i + 1}.jpg`;
   }
 }

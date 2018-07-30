@@ -3,52 +3,50 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 
-<div class="content"
-     *ngIf="!loading && challenges">
-  <mat-accordion>
-    <ng-container *ngFor="let week of challenges; let i = index">
-      <mat-expansion-panel [hideToggle]="true"
-                           [expanded]="week.current">
-        <mat-expansion-panel-header>
-          <div class="week-title">
-            <span>Week {{ i + 1 }}</span>
-            <div class="challenges-completed">{{challenges.selectedOptions.selected.length}}/7</div>
-          </div>
-        </mat-expansion-panel-header>
-        <mat-selection-list #challenges>
-          <ng-container *ngFor="let challenge of week.value">
-            <mat-list-option class="mat-list-item-word-wrap"
-                             #check
-                             [selected]="progress.value === challenge.total">
-              <h3 class="challenge-title"
-                  matLine>{{challenge.challenge}}</h3>
-
-              <p matLine>{{challenge.stars}}
-                <img height="20px"
-                     src="../../assets/img/star.png">
-              </p>
-            </mat-list-option>
-            <div class="progress-container">
-              <mat-slider #progress
-                          matLine
-                          [color]="'primary'"
-                          class="progress"
-                          [value]="check.selected ? challenge.total : progress.value"
-                          [max]="challenge.total"
-                          [step]="1"
-                          [thumbLabel]="true">
-              </mat-slider>
-              <div class="challenge-progress">{{progress.value}}/{{challenge.total}}</div>
-
+<div class="main-content">
+  <div class="content"
+       *ngIf="!loading && challenges">
+    <mat-accordion>
+      <ng-container *ngFor="let week of challenges; let i = index">
+        <mat-expansion-panel [hideToggle]="true"
+                             [expanded]="week.current">
+          <mat-expansion-panel-header>
+            <div class="week-title">
+              <span>Week {{ i + 1 }}</span>
+              <div class="challenges-completed">{{challenges.selectedOptions.selected.length}}/7</div>
             </div>
+          </mat-expansion-panel-header>
+          <mat-selection-list #challenges>
+            <ng-container *ngFor="let challenge of week.value">
+              <mat-list-option class="mat-list-item-word-wrap"
+                               #check
+                               [selected]="progress.value === challenge.total">
+                <h3 class="challenge-title"
+                    matLine>{{challenge.challenge}}</h3>
 
-          </ng-container>
-        </mat-selection-list>
-        <!--
-        <p>
-          Challenges Completed:
-        </p> -->
-      </mat-expansion-panel>
-    </ng-container>
-  </mat-accordion>
+                <p matLine>{{challenge.stars}}
+                  <img height="20px"
+                       src="../../assets/img/star.png">
+                </p>
+              </mat-list-option>
+              <div class="progress-container">
+                <mat-slider #progress
+                            matLine
+                            [color]="'primary'"
+                            class="progress"
+                            [value]="check.selected ? challenge.total : progress.value"
+                            [max]="challenge.total"
+                            [step]="1"
+                            [thumbLabel]="true">
+                </mat-slider>
+                <div class="challenge-progress">{{progress.value}}/{{challenge.total}}</div>
+
+              </div>
+
+            </ng-container>
+          </mat-selection-list>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+  </div>
 </div>

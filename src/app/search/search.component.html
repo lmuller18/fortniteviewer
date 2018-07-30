@@ -1,31 +1,33 @@
-<div class="search-form-container">
-  <mat-card>
-    <div class="search-form">
-      <mat-form-field>
-        <input matInput
-               placeholder="Email"
-               [formControl]="usernameFormControl"
-               [errorStateMatcher]="matcher">
-        <mat-hint>Epic Username</mat-hint>
-        <mat-error *ngIf="usernameFormControl.hasError('required')">
-          Username is
-          <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Platform"
-                    [formControl]="platformFormControl"
-                    name="food">
-          <mat-option *ngFor="let platform of platforms"
-                      [value]="platform.key">
-            {{platform.value}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<div class="main-content">
+  <div class="search-form-container">
+    <mat-card>
+      <div class="search-form">
+        <mat-form-field>
+          <input matInput
+                 placeholder="Username"
+                 [formControl]="usernameFormControl"
+                 [errorStateMatcher]="matcher">
+          <mat-hint>Epic Username</mat-hint>
+          <mat-error *ngIf="usernameFormControl.hasError('required')">
+            Username is
+            <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Platform"
+                      [formControl]="platformFormControl"
+                      name="food">
+            <mat-option *ngFor="let platform of platforms"
+                        [value]="platform.key">
+              {{platform.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <button mat-button
-              color="primary"
-              (click)="onSubmit()">Search</button>
-    </div>
-  </mat-card>
+        <button mat-button
+                color="primary"
+                (click)="onSubmit()">Search</button>
+      </div>
+    </mat-card>
+  </div>
 </div>

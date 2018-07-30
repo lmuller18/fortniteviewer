@@ -8,12 +8,22 @@
   position: fixed;
 }
 
-.main-content {
-  padding: 30px;
-  padding-top: 53px;
-  overflow: auto;
-  min-height: 95vh;
-  max-height: 100%;
+::ng-deep {
+  .main-content {
+    padding: 30px;
+    padding-top: 53px;
+    overflow: auto;
+    min-height: 95vh;
+    max-height: 100%;
+  }
+
+  .loader {
+    height: 90vh;
+    mat-progress-spinner {
+      top: 40%;
+      margin: auto;
+    }
+  }
 }
 
 .mat-toolbar {

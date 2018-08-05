@@ -4,23 +4,20 @@
 </div>
 <div class="main-content"
      *ngIf="!loading && store">
-  <ng-container *ngFor="let item of store">
+  <h1 class="store-type"> Featured </h1>
+  <ng-container *ngFor="let item of store.featured">
     <div class="card-container">
-      <mat-card>
-        <div class="container">
-          <img [src]="item.item.images.background">
-          <div class="overlay">
-            <div class="info-container">
-              <div class="title-container">
-                <span class="store-title">{{ item.name }}</span>
-              </div>
-              <div class="price-container">
-                <img src="../../assets/img/vbucks.png"> {{item.cost}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </mat-card>
+      <div class="container">
+        <img [src]="item.images.gallery">
+      </div>
+    </div>
+  </ng-container>
+  <h1 class="store-type"> Daily </h1>
+  <ng-container *ngFor="let item of store.daily">
+    <div class="card-container">
+      <div class="container">
+        <img [src]="item.images.gallery">
+      </div>
     </div>
   </ng-container>
 </div>

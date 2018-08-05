@@ -25,7 +25,7 @@ import { ErrorModule } from './error/error.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'news',
+    redirectTo: 'store',
     pathMatch: 'full'
   }
 ];

@@ -8,7 +8,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StoreComponent implements OnInit {
   response: any;
-  store: any[];
+  store: {
+    featured: any[];
+    daily: any[];
+  };
   loading = true;
 
   constructor(private http: HttpClient) {}
@@ -21,7 +24,7 @@ export class StoreComponent implements OnInit {
     this.http.get(`https://fortniteapi-c5d8e.firebaseapp.com/store`).subscribe(
       data => {
         this.response = data;
-        this.store = this.response.items;
+        this.store = this.response.data;
         this.loading = false;
       },
       err => console.log(err),

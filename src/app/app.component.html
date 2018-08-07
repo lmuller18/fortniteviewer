@@ -6,13 +6,6 @@
          width="100%">
     <mat-nav-list (click)="snav.close()">
       <a mat-list-item
-         routerLink="/store">
-        <div class="side-nav-item">
-          <mat-icon>store_mall_directory</mat-icon>
-          <span>Store</span>
-        </div>
-      </a>
-      <a mat-list-item
          routerLink="/news">
         <div class="side-nav-item">
           <mat-icon>featured_play_list</mat-icon>
@@ -20,10 +13,10 @@
         </div>
       </a>
       <a mat-list-item
-         routerLink="/challenges">
+         routerLink="/store">
         <div class="side-nav-item">
-          <mat-icon svgIcon="trophy"></mat-icon>
-          <span>Challenges</span>
+          <mat-icon>store_mall_directory</mat-icon>
+          <span>Store</span>
         </div>
       </a>
       <a mat-list-item
@@ -31,6 +24,20 @@
         <div class="side-nav-item">
           <mat-icon>search</mat-icon>
           <span>Search</span>
+        </div>
+      </a>
+      <a mat-list-item
+         routerLink="/upcoming">
+        <div class="side-nav-item">
+          <mat-icon>hourglass_full</mat-icon>
+          <span>Upcoming</span>
+        </div>
+      </a>
+      <a mat-list-item
+         routerLink="/challenges">
+        <div class="side-nav-item">
+          <mat-icon svgIcon="trophy"></mat-icon>
+          <span>Challenges</span>
         </div>
       </a>
     </mat-nav-list>

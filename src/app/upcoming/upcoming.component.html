@@ -1,0 +1,59 @@
+<div class="loader"
+     *ngIf="loading">
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+<div class="main-content"
+     *ngIf="!loading && upcoming">
+  <div class="filter-header">
+    <h1 class="store-type"> Upcoming </h1>
+
+    <div>
+      <button mat-raised-button
+              [color]="'primary'"
+              (click)="filter ? filter = false : filter = true">Filter</button>
+    </div>
+  </div>
+
+  <mat-card class="filter-card"
+            *ngIf="filter">
+    <div class="filter-form">
+      <mat-form-field>
+        <input matInput
+               placeholder="Item Name"
+               [(ngModel)]="nameFilter">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Item Type"
+                    [(ngModel)]="typeFilter">
+          <mat-option *ngFor="let type of itemTypes"
+                      [value]="type.key">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Item Rarity"
+                    [(ngModel)]="rarityFilter">
+          <mat-option *ngFor="let type of itemRarities"
+                      [value]="type.key">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <ng-container *ngFor="let item of upcoming | filter:nameFilter:typeFilter:rarityFilter">
+    <div class="card-container">
+      <div class="container">
+        <img [src]="item.images.icon"
+             [ngClass]="item.rarity">
+        <div class="details-overlay">
+          <div class="details">
+            <h2>{{item.name}}</h2>
+            <h4>{{item.price}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

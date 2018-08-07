@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreComponent } from './store.component';
+import { UpcomingComponent } from './upcoming.component';
 import {
   MatButtonModule,
   MatIconModule,
   MatCardModule,
   MatProgressSpinnerModule,
-  MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatInputModule
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
-export const ROUTES: Routes = [{ path: 'store', component: StoreComponent }];
+export const ROUTES: Routes = [
+  { path: 'upcoming', component: UpcomingComponent }
+];
 @NgModule({
   imports: [
     RouterModule.forChild(ROUTES),
@@ -29,7 +31,7 @@ export const ROUTES: Routes = [{ path: 'store', component: StoreComponent }];
     FormsModule,
     SharedModule
   ],
-  declarations: [StoreComponent],
-  exports: [StoreComponent]
+  declarations: [UpcomingComponent],
+  exports: [UpcomingComponent]
 })
-export class StoreModule {}
+export class UpcomingModule {}

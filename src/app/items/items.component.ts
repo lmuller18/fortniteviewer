@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {
+  Router,
+  ActivatedRoute,
+  ParamMap,
+  NavigationEnd
+} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as items from '../../mock/items.json';
@@ -21,14 +26,21 @@ export class ItemsComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        (<any>window).ga('set', 'page', event.urlAfterRedirects);
+        (<any>window).ga('send', 'pageview');
+      }
+    });
+  }
 
   ngOnInit() {
     this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
           this.query = params.get('item');
-          return this.getPlayer(params.get('type'), params.get('item'));
+          return this.getItems(params.get('type'), params.get('item'));
         })
       )
       // of(items)
@@ -44,7 +56,7 @@ export class ItemsComponent implements OnInit {
       );
   }
 
-  getPlayer(type, item) {
+  getItems(type, item) {
     const url = `https://fortniteapi-c5d8e.firebaseapp.com/items?query=${item}&type=${type}`;
     return this.http.get(url);
   }

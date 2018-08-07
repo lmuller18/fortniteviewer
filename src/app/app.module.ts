@@ -22,6 +22,7 @@ import { PlayerModule } from './player/player.module';
 import { SearchModule } from './search/search.module';
 import { ErrorModule } from './error/error.module';
 import { ItemsModule } from './items/items.module';
+import { UpcomingModule } from './upcoming/upcoming.module';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
     PlayerModule,
     SearchModule,
     ItemsModule,
+    UpcomingModule,
     ErrorModule
   ],
   exports: [RouterModule],

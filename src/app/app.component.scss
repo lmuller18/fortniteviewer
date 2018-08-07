@@ -6,6 +6,8 @@
   width: 75vw;
   height: 100vh;
   position: fixed;
+  display: flex;
+  flex-direction: column;
 }
 
 ::ng-deep {
@@ -74,15 +76,10 @@
 }
 
 .bottom-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
   width: auto; /* to keep proportions */
   height: auto; /* to keep proportions */
   max-width: 100%; /* not to stand out from div */
-  max-height: 40%; /* not to stand out from div */
+  max-height: 45%; /* not to stand out from div */
   margin: auto auto 0; /* position to bottom and center */
   object-fit: cover;
 }

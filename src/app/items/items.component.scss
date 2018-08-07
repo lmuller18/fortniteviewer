@@ -1,0 +1,51 @@
+.store-type {
+  font-family: 'Luckiest Guy', cursive;
+  font-weight: 500;
+  color: white;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+
+  .container {
+    position: relative;
+    width: 250px;
+    img {
+      display: block;
+      margin: auto;
+      width: 250px;
+    }
+
+    .details-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      .details {
+        background: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        width: 100%;
+        bottom: 2px;
+        right: -2px;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        letter-spacing: 2px;
+
+        h4,
+        h2 {
+          margin: 0 0 0.5rem 0;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,12 @@
 .search-form {
-  display: flex;
   flex-direction: column;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-card {
+  width: 75%;
 }
 
 .search-form > * {
@@ -10,7 +16,24 @@
 .search-form-container {
   display: flex;
   justify-content: center;
-  align-content: center;
-  flex-direction: column;
-  margin-top: 50%;
+  width: 100%;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.player-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+::ng-deep .mat-tab-header {
+  z-index: 999;
+  width: 100vw;
+  position: fixed !important;
+  bottom: 0;
 }

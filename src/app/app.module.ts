@@ -21,6 +21,7 @@ import { ChallengesModule } from './challenges/challenges.module';
 import { PlayerModule } from './player/player.module';
 import { SearchModule } from './search/search.module';
 import { ErrorModule } from './error/error.module';
+import { ItemsModule } from './items/items.module';
 
 const routes: Routes = [
   {
@@ -48,6 +49,7 @@ const routes: Routes = [
     ChallengesModule,
     PlayerModule,
     SearchModule,
+    ItemsModule,
     ErrorModule
   ],
   exports: [RouterModule],

@@ -1,0 +1,60 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": "5b47d3f2582d6f0e69a1d192",
+      "name": "Drift",
+      "price": "Tier 1 (S5)",
+      "priceIcon": "vip",
+      "priceIconLink": "https://image.fnbr.co/price/icon_vip.png",
+      "images": {
+        "icon":
+          "https://image.fnbr.co/outfit/5b47d3f2582d6f0e69a1d192/icon.png",
+        "png": false,
+        "gallery": false,
+        "featured": false
+      },
+      "rarity": "legendary",
+      "type": "outfit",
+      "readableType": "Outfit"
+    },
+    {
+      "id": "5b47d76a582d6f4db7a1d19e",
+      "name": "Drift",
+      "price": "Tier 4 (S5)",
+      "priceIcon": "fip",
+      "priceIconLink": "https://image.fnbr.co/price/icon_fip.png",
+      "images": {
+        "icon":
+          "https://image.fnbr.co/loading/5b47d76a582d6f4db7a1d19e/icon.png",
+        "png": false,
+        "gallery": false,
+        "featured": false
+      },
+      "rarity": "uncommon",
+      "type": "loading",
+      "readableType": "Loading Screen"
+    },
+    {
+      "id": "5b47dc25582d6f88aea1d1bb",
+      "name": "Drift",
+      "price": "Tier 54 (S5)",
+      "priceIcon": "vip",
+      "priceIconLink": "https://image.fnbr.co/price/icon_vip.png",
+      "images": {
+        "icon": "https://image.fnbr.co/spray/5b47dc25582d6f88aea1d1bb/icon.png",
+        "png": false,
+        "gallery": false,
+        "featured":
+          "https://image.fnbr.co/spray/5b47dc25582d6f88aea1d1bb/featured.png"
+      },
+      "rarity": "uncommon",
+      "type": "spray",
+      "readableType": "Spray"
+    }
+  ],
+  "query": {
+    "search": "Drift",
+    "limit": 15
+  }
+}

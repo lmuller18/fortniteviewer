@@ -30,6 +30,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class SearchComponent implements OnInit {
   usernameFormControl = new FormControl('', [Validators.required]);
   platformFormControl = new FormControl('', [Validators.required]);
+  itemFormControl = new FormControl('', [Validators.required]);
+  itemTypeFormControl = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
 
@@ -48,6 +50,57 @@ export class SearchComponent implements OnInit {
     }
   ];
 
+  itemTypes = [
+    {
+      key: 'any',
+      value: 'Any'
+    },
+    {
+      key: 'backpack',
+      value: 'Back Bling'
+    },
+    {
+      key: 'emote',
+      value: 'Emote'
+    },
+    {
+      key: 'glider',
+      value: 'Glider'
+    },
+    {
+      key: 'emoji',
+      value: 'Emoji'
+    },
+    {
+      key: 'loading',
+      value: 'Loading Screen'
+    },
+    {
+      key: 'outfit',
+      value: 'Skin'
+    },
+    {
+      key: 'pickaxe',
+      value: 'Harvesting Tool'
+    },
+    {
+      key: 'skydive',
+      value: 'Skydiving Trail'
+    },
+    {
+      key: 'umbrella',
+      value: 'Umbrella'
+    },
+    {
+      key: 'spray',
+      value: 'Spray'
+    },
+    {
+      key: 'toy',
+      value: 'Toy'
+    }
+  ];
+
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -59,11 +112,19 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit() {
+  searchPlayer() {
     if (this.usernameFormControl.value && this.platformFormControl.value) {
       const username = this.usernameFormControl.value;
       const platform = this.platformFormControl.value;
       this.router.navigate([`/player/${platform}/${username}`]);
+    }
+  }
+
+  searchItem() {
+    if (this.itemFormControl.value && this.itemTypeFormControl.value) {
+      const item = this.itemFormControl.value;
+      const type = this.itemTypeFormControl.value;
+      this.router.navigate([`/items/${type}/${item}`]);
     }
   }
 }

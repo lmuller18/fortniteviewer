@@ -57,8 +57,6 @@ export class PlayerComponent implements OnInit {
       // of(player)
       .subscribe(
         (data: any) => {
-          console.log(data);
-          console.log(data.group.solo.timePlayed);
           this.groups.forEach((element, index) => {
             const keys = [];
             for (const key of Object.keys((<any>data).group[element])) {
@@ -69,7 +67,6 @@ export class PlayerComponent implements OnInit {
           });
           this.player.username = (<any>data).info.username;
           this.loading = false;
-          console.log(this.player);
         },
         err => {
           this.error =
@@ -82,7 +79,6 @@ export class PlayerComponent implements OnInit {
 
   getPlayer(platform, username) {
     const url = `https://fortniteapi-c5d8e.firebaseapp.com/player?platform=${platform}&username=${username}&season=weekly`;
-    console.log(url);
     return this.http.get(url);
   }
 

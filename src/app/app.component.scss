@@ -24,6 +24,30 @@
       margin: auto;
     }
   }
+
+  .common {
+    background: radial-gradient(#bebebe, #646464);
+    border: 2px solid #b1b1b1;
+  }
+
+  .uncommon {
+    background: radial-gradient(#60aa3a, #175117);
+    border: 2px solid #87e339;
+  }
+
+  .rare {
+    background: radial-gradient(#49acf2, #143977);
+    border: 2px solid #37d1ff;
+  }
+
+  .epic {
+    background: radial-gradient(#b15be2, #4b2483);
+    border: 2px solid #e95eff;
+  }
+  .legendary {
+    background: radial-gradient(#d37841, #78371d);
+    border: 2px solid #e98d4b;
+  }
 }
 
 .mat-toolbar {

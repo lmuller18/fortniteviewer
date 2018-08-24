@@ -49,11 +49,19 @@
              [ngClass]="item.rarity">
         <div class="details-overlay">
           <div class="details">
-            <h2>{{item.name}}</h2>
-            <h4>{{item.price}}</h4>
+            <div class="name">{{item.name}}</div>
+            <div class="price">
+              <div class="amount">{{item.price}}</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </ng-container>
+
+  <div class="disclaimer">
+    <span>All item images provided by
+      <a href="https://www.fnbr.co">fnbr.co</a>
+    </span>
+  </div>
 </div>

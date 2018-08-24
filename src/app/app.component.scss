@@ -50,6 +50,14 @@
     background: radial-gradient(#d37841, #78371d);
     border: 2px solid #e98d4b;
   }
+
+  .disclaimer {
+    color: white;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
 }
 
 .mat-toolbar {

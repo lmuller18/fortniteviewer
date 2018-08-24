@@ -42,8 +42,26 @@
 
         letter-spacing: 2px;
 
-        h4,
-        h2 {
+        .price {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .amount {
+          margin: 0 0 2.5px 0;
+          font-weight: bold;
+          font-size: 21.28px;
+        }
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+
+        .name {
+          font-weight: bold;
+          font-size: 24px;
           text-align: center;
           margin: 0 0 0.5rem 0;
         }

@@ -1,6 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+html {
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
 body {
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;

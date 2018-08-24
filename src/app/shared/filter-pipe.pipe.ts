@@ -9,9 +9,13 @@ export class FilterPipe implements PipeTransform {
     items: any[],
     nameFilter: string,
     typeFilter: string,
-    rarityFilter: string
+    rarityFilter: string,
+    storeFilter: string
   ): any {
-    if (!items || (!nameFilter && !typeFilter && !rarityFilter)) {
+    if (
+      !items ||
+      (!nameFilter && !typeFilter && !rarityFilter && !storeFilter)
+    ) {
       return items;
     }
 
@@ -19,7 +23,8 @@ export class FilterPipe implements PipeTransform {
       item =>
         (item.type === typeFilter || typeFilter === '') &&
         (item.name.indexOf(nameFilter) !== -1 || nameFilter === '') &&
-        (item.rarity === rarityFilter || rarityFilter === '')
+        (item.rarity === rarityFilter || rarityFilter === '') &&
+        (!storeFilter || item.storeType === storeFilter || storeFilter === '')
     );
   }
 }

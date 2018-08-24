@@ -6,25 +6,34 @@
      *ngIf="!loading && store">
 
   <div class="store-header">
-    <h1 class="store-type"> Featured </h1>
+    <h1 class="store-type"> Store </h1>
     <div>
       <button mat-raised-button
               [color]="'primary'"
-              (click)="featuredFilter ? featuredFilter = false : featuredFilter = true">Filter</button>
+              (click)="filter ? filter = false : filter = true">Filter</button>
     </div>
   </div>
 
   <mat-card class="filter-card"
-            *ngIf="featuredFilter">
+            *ngIf="filter">
     <div class="filter-form">
       <mat-form-field>
         <input matInput
                placeholder="Item Name"
-               [(ngModel)]="featuredNameFilter">
+               [(ngModel)]="nameFilter">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Store Type"
+                    [(ngModel)]="storeFilter">
+          <mat-option *ngFor="let type of storeTypes"
+                      [value]="type.key">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-select placeholder="Item Type"
-                    [(ngModel)]="featuredTypeFilter">
+                    [(ngModel)]="typeFilter">
           <mat-option *ngFor="let type of itemTypes"
                       [value]="type.key">
             {{type.value}}
@@ -33,7 +42,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-select placeholder="Item Rarity"
-                    [(ngModel)]="featuredRarityFilter">
+                    [(ngModel)]="rarityFilter">
           <mat-option *ngFor="let type of itemRarities"
                       [value]="type.key">
             {{type.value}}
@@ -43,59 +52,29 @@
     </div>
   </mat-card>
 
-  <ng-container *ngFor="let item of store.featured | filter:featuredNameFilter:featuredTypeFilter:featuredRarityFilter">
+  <ng-container *ngFor="let item of store | filter:nameFilter:typeFilter:rarityFilter:storeFilter">
     <div class="card-container">
       <div class="container">
-        <img [src]="item.images.gallery">
+        <img [src]="item.images.icon"
+             [ngClass]="item.rarity"
+             class="item-img">
+        <div class="details-overlay">
+          <div class="details">
+            <div class="name">{{item.name}}</div>
+            <div class="price">
+              <div class="amount">{{item.price}}</div>
+              <img class="price-img"
+                   [src]="item.priceIconLink">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </ng-container>
 
-  <div class="store-header">
-    <h1 class="store-type"> Daily </h1>
-    <div>
-      <button mat-raised-button
-              [color]="'primary'"
-              (click)="dailyFilter ? dailyFilter = false : dailyFilter = true">
-        Filter
-      </button>
-    </div>
+  <div class="disclaimer">
+    <span>All item images provided by
+      <a href="https://www.fnbr.co">fnbr.co</a>
+    </span>
   </div>
-
-  <mat-card class="filter-card"
-            *ngIf="dailyFilter">
-    <div class="filter-form">
-      <mat-form-field>
-        <input matInput
-               placeholder="Item Name"
-               [(ngModel)]="dailyNameFilter">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Item Type"
-                    [(ngModel)]="dailyTypeFilter">
-          <mat-option *ngFor="let type of itemTypes"
-                      [value]="type.key">
-            {{type.value}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Item Rarity"
-                    [(ngModel)]="dailyRarityFilter">
-          <mat-option *ngFor="let type of itemRarities"
-                      [value]="type.key">
-            {{type.value}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </mat-card>
-
-  <ng-container *ngFor="let item of store.daily | filter:dailyNameFilter:dailyTypeFilter:dailyRarityFilter">
-    <div class="card-container">
-      <div class="container">
-        <img [src]="item.images.gallery">
-      </div>
-    </div>
-  </ng-container>
 </div>

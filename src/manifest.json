@@ -1,8 +1,8 @@
 {
-  "name": "fortniteviewer",
-  "short_name": "fortniteviewer",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Fortnite Viewer",
+  "short_name": "Fortnite",
+  "theme_color": "#673ab7",
+  "background_color": "#673ab7",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

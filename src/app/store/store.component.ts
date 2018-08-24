@@ -9,22 +9,30 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class StoreComponent implements OnInit {
   response: any;
-  store: {
-    featured: any[];
-    daily: any[];
-  };
+  store: any[];
   loading = true;
 
-  featuredTypeFilter = '';
-  featuredNameFilter = '';
-  featuredRarityFilter = '';
+  typeFilter = '';
+  nameFilter = '';
+  rarityFilter = '';
+  storeFilter = '';
 
-  dailyTypeFilter = '';
-  dailyNameFilter = '';
-  dailyRarityFilter = '';
+  filter = false;
 
-  featuredFilter = false;
-  dailyFilter = false;
+  storeTypes = [
+    {
+      key: '',
+      value: 'Any'
+    },
+    {
+      key: 'featured',
+      value: 'Featured'
+    },
+    {
+      key: 'daily',
+      value: 'Daily'
+    }
+  ];
 
   itemTypes = [
     {
@@ -120,10 +128,32 @@ export class StoreComponent implements OnInit {
     this.http.get(`https://fortniteapi-c5d8e.firebaseapp.com/store`).subscribe(
       data => {
         this.response = data;
-        this.store = this.response.data;
+        let store = [];
+        this.response.data.featured.forEach(item => {
+          store = [
+            ...store,
+            {
+              ...item,
+              storeType: 'featured'
+            }
+          ];
+        });
+        this.response.data.daily.forEach(item => {
+          store = [
+            ...store,
+            {
+              ...item,
+              storeType: 'daily'
+            }
+          ];
+        });
+        this.store = store;
         this.loading = false;
       },
-      err => console.log(err),
+      err => {
+        this.loading = false;
+        console.log(err);
+      },
       () => console.log('done loading store')
     );
   }

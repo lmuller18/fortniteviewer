@@ -43,20 +43,7 @@
     </div>
   </mat-card>
   <ng-container *ngFor="let item of upcoming | filter:nameFilter:typeFilter:rarityFilter">
-    <div class="card-container">
-      <div class="container">
-        <img [src]="item.images.icon"
-             [ngClass]="item.rarity">
-        <div class="details-overlay">
-          <div class="details">
-            <div class="name">{{item.name}}</div>
-            <div class="price">
-              <div class="amount">{{item.price}}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-item [item]="item"></app-item>
   </ng-container>
 
   <div class="disclaimer">

@@ -1,21 +1,38 @@
 .card-container {
+  display: flex;
+  justify-content: center;
   margin: 2rem 0;
+  font-family: 'Luckiest Guy', cursive;
+  color: blue;
+  .news-container {
+    border: 5px solid white;
+    position: relative;
+    // max-width: 95vw;
 
-  img {
-    display: block;
-    margin: auto;
-  }
+    .entry-container {
+      border-top: 5px solid white;
+      background: white;
+      padding: 1rem;
+      .news-title {
+        text-align: center;
 
-  mat-card {
-    background: linear-gradient(to right, #8e24aa, #b867c6);
-  }
-  // images from api have transparent bottom padding
-  p {
-    margin-top: -3rem;
-  }
+        font-size: 35px;
+        letter-spacing: 2px;
+        color: #050947;
+      }
 
-  .news-title {
-    font-size: 20px;
-    font-weight: 600;
+      .news-body {
+        font-size: 18px;
+        letter-spacing: 2px;
+
+        color: #5d9cc4;
+      }
+    }
+
+    .news-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
   }
 }

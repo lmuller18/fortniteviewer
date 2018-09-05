@@ -9,6 +9,7 @@ import {
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 export const ROUTES: Routes = [
   { path: 'items/:type/:item', component: ItemsComponent }
@@ -21,7 +22,8 @@ export const ROUTES: Routes = [
     MatCardModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   declarations: [ItemsComponent],
   exports: [ItemsComponent]

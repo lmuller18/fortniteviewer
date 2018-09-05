@@ -1,0 +1,20 @@
+<div class="card-container">
+  <div class="container">
+    <img [src]="item.images.icon"
+         [ngClass]="item.rarity"
+         class="item-img">
+    <div class="details-overlay"
+         [ngClass]="item.rarity + '-border'">
+      <div class="details">
+        <div class="name">{{item.name}}</div>
+        <div *ngIf="item.price"
+             class="price">
+          <div class="amount">{{item.price}}</div>
+          <img *ngIf="item.priceIconLink"
+               class="price-img"
+               [src]="item.priceIconLink">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

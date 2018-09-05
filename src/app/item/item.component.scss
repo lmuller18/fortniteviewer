@@ -1,0 +1,61 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+
+  .container {
+    position: relative;
+
+    .item-img {
+      display: block;
+      width: 100%;
+      max-width: 90vw;
+      height: auto;
+    }
+
+    .details-overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5); /* Black see-through */
+      width: 100%;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      .details {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        letter-spacing: 2px;
+
+        .price {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .amount {
+          margin-bottom: 2.5px;
+          // font-weight: bold;
+          font-size: 21px;
+        }
+
+        .price-img {
+          width: 20px;
+          height: 20px;
+        }
+
+        .name {
+          // font-weight: bold;
+          font-size: 24px;
+          text-align: center;
+          padding-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}

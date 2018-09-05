@@ -53,23 +53,7 @@
   </mat-card>
 
   <ng-container *ngFor="let item of store | filter:nameFilter:typeFilter:rarityFilter:storeFilter">
-    <div class="card-container">
-      <div class="container">
-        <img [src]="item.images.icon"
-             [ngClass]="item.rarity"
-             class="item-img">
-        <div class="details-overlay">
-          <div class="details">
-            <div class="name">{{item.name}}</div>
-            <div class="price">
-              <div class="amount">{{item.price}}</div>
-              <img class="price-img"
-                   [src]="item.priceIconLink">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-item [item]="item"></app-item>
   </ng-container>
 
   <div class="disclaimer">

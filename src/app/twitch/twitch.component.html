@@ -1,3 +1,15 @@
-<p>
-  twitch works!
-</p>
+<div class="loader"
+     *ngIf="loading">
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+
+<div class="content"
+     *ngIf="!loading">
+  <div id="twitch-embed"></div>
+  <mat-grid-list cols="2"
+                 rowHeight="2:1"
+                 *ngFor="let card of links">
+    <mat-grid-tile>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

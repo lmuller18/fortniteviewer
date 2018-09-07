@@ -23,6 +23,7 @@ import { SearchModule } from './search/search.module';
 import { ErrorModule } from './error/error.module';
 import { ItemsModule } from './items/items.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
+import { TwitchModule } from './twitch/twitch.module';
 
 const routes: Routes = [
   {
@@ -52,6 +53,7 @@ const routes: Routes = [
     SearchModule,
     ItemsModule,
     UpcomingModule,
+    TwitchModule,
     ErrorModule
   ],
   exports: [RouterModule],

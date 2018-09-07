@@ -1,0 +1,19 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { ErrorModule } from '../error/error.module';
+import { TwitchComponent } from './twitch.component';
+
+export const ROUTES: Routes = [{ path: 'twitch', component: TwitchComponent }];
+@NgModule({
+  imports: [
+    RouterModule.forChild(ROUTES),
+    CommonModule,
+    ErrorModule,
+    HttpClientModule
+  ],
+  declarations: [TwitchComponent],
+  exports: []
+})
+export class TwitchModule {}

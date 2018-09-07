@@ -7,7 +7,8 @@ import { TwitchComponent } from './twitch.component';
 import {
   MatProgressSpinnerModule,
   MatGridListModule,
-  MatCardModule
+  MatCardModule,
+  MatButtonModule
 } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 
@@ -20,6 +21,7 @@ export const ROUTES: Routes = [{ path: 'twitch', component: TwitchComponent }];
     MatProgressSpinnerModule,
     MatGridListModule,
     MatCardModule,
+    MatButtonModule,
     SharedModule,
     HttpClientModule
   ],

@@ -1,59 +1,52 @@
-<div class="content">
-  <div class="header">
-    <h1 class="title"> Top Stream </h1>
-    <div>
-      <button mat-raised-button
-              [color]="'primary'"
-              (click)="showStream ? showStream = false : createPlayer()">
-        {{ showStream ? 'Hide' : 'Show'}} Stream
-      </button>
-    </div>
+<div class="header">
+  <h1 class="title"> Top Stream </h1>
+  <div>
+    <button mat-raised-button
+            [color]="'primary'"
+            (click)="showStream ? showStream = false : createPlayer()">
+      {{ showStream ? 'Hide' : 'Show'}} Stream
+    </button>
   </div>
+</div>
 
-  <div id="player-wrapper"
-       *ngIf="showStream">
-    <div id="twitch-embed"
-         #twitch></div>
+<div id="player-wrapper"
+     *ngIf="showStream">
+  <div id="twitch-embed"
+       #twitch></div>
+</div>
+
+<div class="header">
+  <h3 class="title"> Other Streams </h3>
+  <div>
+    <button mat-raised-button
+            [color]="'primary'"
+            (click)="showStreams ? showStreams = false : showStreams = true">
+      {{ showStreams ? 'Hide' : 'Show'}} Streams
+    </button>
   </div>
+</div>
 
-  <div class="header">
-    <h3 class="title"> Other Streams </h3>
-    <div>
-      <button mat-raised-button
-              [color]="'primary'"
-              (click)="showStreams ? showStreams = false : showStreams = true">
-        {{ showStreams ? 'Hide' : 'Show'}} Streams
-      </button>
-    </div>
-  </div>
-
-  <ng-container *ngIf="showStreams">
-    <mat-grid-list cols="2"
-                   rowHeight="16:9">
-      <mat-grid-tile *ngFor="let stream of streams"
-                     (click)="changeStream(stream)">
-        <div class="card-container">
-          <div class="container">
-            <img [src]="stream.preview.large"
-                 class="stream-img">
-            <div class="details-overlay">
-              <div class="details">
-                <div class="name">{{ stream.channel.display_name }}</div>
-                <div class="status-container">
-                  <div class="stream-status">{{ stream.channel.status }}</div>
-                </div>
-              </div>
-            </div>
+<ng-container *ngIf="showStreams">
+  <!-- <mat-grid-list cols="2"
+                 rowHeight="16:9">
+    <mat-grid-tile > -->
+  <div class="card-container"
+       *ngFor="let stream of streams"
+       (click)="changeStream(stream)">
+    <div class="container">
+      <img [src]="stream.preview.large"
+           class="stream-img">
+      <div class="details-overlay">
+        <div class="details">
+          <div class="name">{{ stream.channel.display_name }}</div>
+          <div class="status-container">
+            <div class="stream-status">{{ stream.channel.status }}</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-      </mat-grid-tile>
-    </mat-grid-list>
-  </ng-container>
-  <mat-grid-list cols="2"
-                 rowHeight="2:1"
-                 *ngFor="let card of links">
-    <mat-grid-tile>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+  <!-- </mat-grid-tile>
+  </mat-grid-list> -->
+</ng-container>

@@ -24,11 +24,12 @@ import { ErrorModule } from './error/error.module';
 import { ItemsModule } from './items/items.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
 import { TwitchModule } from './twitch/twitch.module';
+import { HomeModule } from './home/home.module';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'store',
+    redirectTo: '',
     pathMatch: 'full'
   }
 ];
@@ -53,7 +54,7 @@ const routes: Routes = [
     SearchModule,
     ItemsModule,
     UpcomingModule,
-    TwitchModule,
+    HomeModule,
     ErrorModule
   ],
   exports: [RouterModule],

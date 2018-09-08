@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ElementRef,
-  ViewChild,
-  ViewContainerRef
-} from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as twitchStream from '../../mock/twitch-stream.json';
 import { Router, NavigationEnd } from '@angular/router';
@@ -25,25 +19,6 @@ export class TwitchComponent implements OnInit {
 
   @ViewChild('twitch')
   twitchContainer: ElementRef;
-
-  links: [
-    {
-      name: 'Store';
-      description: 'Daily Cosmetic Store';
-    },
-    {
-      name: 'News';
-      description: 'Fortnite Battle Royale News';
-    },
-    {
-      name: 'Upcoming';
-      description: 'Upcoming Cosmetics';
-    },
-    {
-      name: 'Challeneges';
-      description: 'Weekly Season Challenges';
-    }
-  ];
 
   constructor(
     private http: HttpClient,
@@ -75,21 +50,23 @@ export class TwitchComponent implements OnInit {
   ngOnInit() {}
 
   loadPlayer() {
-    // this.http.get(`https://api.twitch.tv/kraken/streams/?game=Fortnite`, {
-    //   headers: { 'Client-ID': '69fkr6blp5udnsrmxytx2mjtzvwgk4' }
-    // });
-    of(twitchStream).subscribe(
-      (streams: any) => {
-        this.stream = streams.streams[0];
-        this.streams = streams.streams.slice(1, 5);
-        console.log((<any>window).Twitch);
-        if (typeof window !== 'undefined' && (<any>window).Twitch) {
-          this.createPlayer();
-        }
-      },
-      err => console.log(err),
-      () => console.log('done loading twitch')
-    );
+    this.http
+      .get(`https://api.twitch.tv/kraken/streams/?game=Fortnite`, {
+        headers: { 'Client-ID': '69fkr6blp5udnsrmxytx2mjtzvwgk4' }
+      })
+      // of(twitchStream)
+      .subscribe(
+        (streams: any) => {
+          this.stream = streams.streams[0];
+          this.streams = streams.streams.slice(1, 5);
+          console.log((<any>window).Twitch);
+          if (typeof window !== 'undefined' && (<any>window).Twitch) {
+            this.createPlayer();
+          }
+        },
+        err => console.log(err),
+        () => console.log('done loading twitch')
+      );
   }
 
   createPlayer() {

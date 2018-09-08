@@ -1,0 +1,74 @@
+.content {
+  padding-top: 53px;
+  overflow: auto;
+  min-height: 95vh;
+  max-height: 100%;
+
+  .header {
+    margin: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    font-family: 'Luckiest Guy', cursive;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: white;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-family: 'Nunito Sans', sans-serif;
+    color: white;
+
+    .container {
+      position: relative;
+
+      .stream-img {
+        display: block;
+        width: 100%;
+        max-width: 90vw;
+        height: auto;
+      }
+
+      .details-overlay {
+        position: absolute;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Black see-through */
+        width: 100%;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        .details {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+
+          .name {
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            padding-bottom: 0.5rem;
+          }
+
+          .status-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .stream-status {
+              margin-bottom: 2.5px;
+              font-size: 11px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

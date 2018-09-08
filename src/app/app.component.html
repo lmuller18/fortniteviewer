@@ -6,6 +6,13 @@
          width="100%">
     <mat-nav-list (click)="snav.close()">
       <a mat-list-item
+         routerLink="/">
+        <div class="side-nav-item">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </div>
+      </a>
+      <a mat-list-item
          routerLink="/news">
         <div class="side-nav-item">
           <mat-icon>featured_play_list</mat-icon>
@@ -46,7 +53,7 @@
          width="100%">
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar [color]="'primary'">
+    <mat-toolbar>
       <button mat-icon-button
               (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
@@ -56,9 +63,3 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<!--
-// featured_play_list
-// attach_money
-// local_grocery_store
-// local_offer
-// store_mall_directory -->

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorModule } from '../error/error.module';
-import { TwitchComponent } from './twitch.component';
+import { TwitchComponent } from '../twitch/twitch.component';
+import { HomeComponent } from './home.component';
 import {
   MatProgressSpinnerModule,
   MatGridListModule,
@@ -12,7 +13,7 @@ import {
 } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 
-export const ROUTES: Routes = [{ path: 'twitch', component: TwitchComponent }];
+export const ROUTES: Routes = [{ path: '', component: HomeComponent }];
 @NgModule({
   imports: [
     RouterModule.forChild(ROUTES),
@@ -25,7 +26,7 @@ export const ROUTES: Routes = [{ path: 'twitch', component: TwitchComponent }];
     SharedModule,
     HttpClientModule
   ],
-  declarations: [TwitchComponent],
+  declarations: [HomeComponent, TwitchComponent],
   exports: []
 })
-export class TwitchModule {}
+export class HomeModule {}

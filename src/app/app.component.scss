@@ -16,6 +16,15 @@
   right: 0;
   left: 0;
   z-index: 9;
+
+  color: #000;
+  font-family: 'Nunito Sans';
+  font-size: 24px;
+  background-image: url('../assets/img/purple.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  border-bottom: 1px solid #80808036;
 }
 
 .side-nav-item {
@@ -30,7 +39,10 @@
 }
 
 .side-nav {
-  background-color: #673ab7;
+  background-image: url('../assets/img/blue.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .bottom-img {

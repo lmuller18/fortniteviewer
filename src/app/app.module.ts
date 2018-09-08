@@ -23,7 +23,6 @@ import { SearchModule } from './search/search.module';
 import { ErrorModule } from './error/error.module';
 import { ItemsModule } from './items/items.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
-import { TwitchModule } from './twitch/twitch.module';
 import { HomeModule } from './home/home.module';
 
 const routes: Routes = [

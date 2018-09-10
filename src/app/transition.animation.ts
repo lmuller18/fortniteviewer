@@ -7,7 +7,11 @@ import {
   query as q,
   transition
 } from '@angular/animations';
-const query = (s, a, o = { optional: true }) => q(s, a, o);
+
+export function query(s, a, o = { optional: true }) {
+  return q(s, a, o);
+}
+// const query = (s, a, o = { optional: true }) => q(s, a, o);
 
 export const transitionAnimation = trigger('transitionAnimation', [
   transition(':enter', [

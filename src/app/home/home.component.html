@@ -1,15 +1,11 @@
-<div class="content">
+<div class="content"
+     [@homeState]="loading">
   <app-twitch></app-twitch>
-
 
   <div class="header">
     <h1 class="title"> Top Links </h1>
   </div>
 
-
-  <!-- <mat-grid-list cols="1"
-                 rowHeight="2:1">
-    <mat-grid-tile > -->
   <div class="card-container"
        *ngFor="let link of links"
        (click)="navigate(link.link)">
@@ -26,6 +22,4 @@
       </div>
     </div>
   </div>
-  <!-- </mat-grid-tile>
-  </mat-grid-list> -->
 </div>

@@ -5,7 +5,7 @@
 
 <div class="main-content">
   <div class="content"
-       *ngIf="!loading && challenges">
+       [@challengesState]="loading">
     <mat-accordion>
       <ng-container *ngFor="let week of challenges; let i = index">
         <mat-expansion-panel [hideToggle]="true"

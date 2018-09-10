@@ -1,10 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.component.html',
-  styleUrls: ['./challenges.component.scss']
+  styleUrls: ['./challenges.component.scss'],
+  animations: [
+    trigger('challengesState', [
+      state(
+        'true',
+        style({
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          transition: 'visibility 0s, opacity 0.5s linear'
+        })
+      ),
+      state(
+        'false',
+        style({
+          visibility: 'visible',
+          opacity: 1
+        })
+      ),
+      transition('true => false', animate('500ms ease-in')),
+      transition('false => true', animate('500ms ease-out'))
+    ])
+  ]
 })
 export class ChallengesComponent implements OnInit {
   response: any;
@@ -46,10 +75,12 @@ export class ChallengesComponent implements OnInit {
 
           keys[index].current = true;
           this.challenges = keys;
-          this.loading = false;
         },
         err => console.log(err),
-        () => console.log('done loading challenges')
+        () => {
+          this.loading = false;
+          console.log('done loading challenges');
+        }
       );
   }
 }

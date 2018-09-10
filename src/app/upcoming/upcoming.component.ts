@@ -1,12 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-import * as upcoming_mock from '../../mock/upcoming.json';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 @Component({
   selector: 'app-upcoming',
   templateUrl: './upcoming.component.html',
-  styleUrls: ['./upcoming.component.scss']
+  styleUrls: ['./upcoming.component.scss'],
+  animations: [
+    trigger('upcomingState', [
+      state(
+        'true',
+        style({
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          transition: 'visibility 0s, opacity 0.5s linear'
+        })
+      ),
+      state(
+        'false',
+        style({
+          visibility: 'visible',
+          opacity: 1
+        })
+      ),
+      transition('true => false', animate('500ms ease-in')),
+      transition('false => true', animate('500ms ease-out'))
+    ])
+  ]
 })
 export class UpcomingComponent implements OnInit {
   upcoming: any[];
@@ -107,9 +134,6 @@ export class UpcomingComponent implements OnInit {
   }
 
   getUpcoming() {
-    this.loading = false;
-    this.upcoming = (<any>upcoming_mock).data;
-
     this.http
       .get(`https://fortniteapi-c5d8e.firebaseapp.com/upcoming`)
       .subscribe(

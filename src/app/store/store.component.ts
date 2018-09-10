@@ -1,11 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
-  styleUrls: ['./store.component.scss']
+  styleUrls: ['./store.component.scss'],
+  animations: [
+    trigger('storeState', [
+      state(
+        'true',
+        style({
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          transition: 'visibility 0s, opacity 0.5s linear'
+        })
+      ),
+      state(
+        'false',
+        style({
+          visibility: 'visible',
+          opacity: 1
+        })
+      ),
+      transition('true => false', animate('500ms ease-in')),
+      transition('false => true', animate('500ms ease-out'))
+    ])
+  ]
 })
 export class StoreComponent implements OnInit {
   response: any;
@@ -148,13 +176,12 @@ export class StoreComponent implements OnInit {
           ];
         });
         this.store = store;
-        this.loading = false;
       },
-      err => {
+      err => console.log(err),
+      () => {
         this.loading = false;
-        console.log(err);
-      },
-      () => console.log('done loading store')
+        console.log('done loading store');
+      }
     );
   }
 }

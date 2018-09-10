@@ -3,14 +3,14 @@
   <div>
     <button mat-raised-button
             [color]="'primary'"
-            (click)="showStream ? showStream = false : createPlayer()">
-      {{ showStream ? 'Hide' : 'Show'}} Stream
+            (click)="streamState === 'active' ? streamState = 'inactive' : streamState = 'active'">
+      {{ streamState === 'active' ? 'Hide' : 'Show'}} Stream
     </button>
   </div>
 </div>
 
 <div id="player-wrapper"
-     *ngIf="showStream">
+     [@streamState]="streamState">
   <div id="twitch-embed"
        #twitch></div>
 </div>
@@ -20,16 +20,13 @@
   <div>
     <button mat-raised-button
             [color]="'primary'"
-            (click)="showStreams ? showStreams = false : showStreams = true">
-      {{ showStreams ? 'Hide' : 'Show'}} Streams
+            (click)="streamsState === 'active' ? streamsState = 'inactive' : streamsState = 'active'">
+      {{ streamsState === 'active' ? 'Hide' : 'Show'}} Streams
     </button>
   </div>
 </div>
 
-<ng-container *ngIf="showStreams">
-  <!-- <mat-grid-list cols="2"
-                 rowHeight="16:9">
-    <mat-grid-tile > -->
+<div [@streamsState]="streamsState">
   <div class="card-container"
        *ngFor="let stream of streams"
        (click)="changeStream(stream)">
@@ -46,7 +43,4 @@
       </div>
     </div>
   </div>
-
-  <!-- </mat-grid-tile>
-  </mat-grid-list> -->
-</ng-container>
+</div>

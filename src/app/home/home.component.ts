@@ -1,12 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('homeState', [
+      state(
+        'true',
+        style({
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          transition: 'visibility 0s, opacity 0.5s linear'
+        })
+      ),
+      state(
+        'false',
+        style({
+          visibility: 'visible',
+          opacity: 1
+        })
+      ),
+      transition('true => false', animate('500ms ease-in')),
+      transition('false => true', animate('500ms ease-out'))
+    ])
+  ]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  loading = true;
   links = [
     {
       name: 'Store',
@@ -41,6 +70,12 @@ export class HomeComponent {
         (<any>window).ga('send', 'pageview');
       }
     });
+  }
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 300);
   }
 
   navigate(link) {

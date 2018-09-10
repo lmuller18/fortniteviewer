@@ -1,65 +1,143 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as twitchGame from '../../mock/twitch-game.json';
 import * as twitchStream from '../../mock/twitch-stream.json';
-import * as twitchUser from '../../mock/twitch-user.json';
 import { Router, NavigationEnd } from '@angular/router';
 import { of } from 'rxjs';
+import 'twitch-embed';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-twitch',
   templateUrl: './twitch.component.html',
-  styleUrls: ['./twitch.component.scss']
+  styleUrls: ['./twitch.component.scss'],
+  animations: [
+    trigger('streamState', [
+      state(
+        'inactive',
+        style({
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          transition: 'visibility 0s, opacity 0.5s linear'
+        })
+      ),
+      state(
+        'active',
+        style({
+          visibility: 'visible',
+          opacity: 1
+        })
+      ),
+      transition('inactive => active', animate('500ms ease-in')),
+      transition('active => inactive', animate('500ms ease-out'))
+    ]),
+    trigger('streamsState', [
+      state(
+        'inactive',
+        style({
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          transition: 'visibility 0s, opacity 0.5s linear'
+        })
+      ),
+      state(
+        'active',
+        style({
+          visibility: 'visible',
+          opacity: 1
+        })
+      ),
+      transition('inactive => active', animate('500ms ease-in')),
+      transition('active => inactive', animate('500ms ease-out'))
+    ])
+  ]
 })
 export class TwitchComponent implements OnInit {
-  game: any;
   stream: any;
-  user: any;
-  loading = true;
+  streams: any[];
+  player: any;
+  streamState = 'active';
+  streamsState = 'inactive';
 
-  constructor(private http: HttpClient, private router: Router) {
+  @ViewChild('twitch')
+  twitchContainer: ElementRef;
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private elementRef: ElementRef
+  ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         (<any>window).ga('set', 'page', event.urlAfterRedirects);
         (<any>window).ga('send', 'pageview');
       }
     });
+    this.loadPlayer();
   }
-  ngOnInit() {
-    // this.http
-    //   .get(`https://api.twitch.tv/helix/games?name=Fortnite`, {
-    //     headers: { 'Client-ID': '69fkr6blp5udnsrmxytx2mjtzvwgk4' }
-    //   })
-    of(twitchGame).subscribe(
-      search => {
-        this.game = (<any>search).data[0];
-        this.loading = false;
-        // this.http
-        //   .get(
-        //     `https://api.twitch.tv/helix/streams?game_id=${this.game.id}`,
-        //     {
-        //       headers: { 'Client-ID': '69fkr6blp5udnsrmxytx2mjtzvwgk4' }
-        //     }
-        //   )
-        of(twitchStream).subscribe(streams => {
-          this.stream = (<any>streams).data[0];
-          console.log('stream', this.stream);
-          // this.http
-          //   .get(
-          //     `https://api.twitch.tv/helix/users?id=${this.stream.user_id}`,
-          //     {
-          //       headers: { 'Client-ID': '69fkr6blp5udnsrmxytx2mjtzvwgk4' }
-          //     }
-          //   )
-          of(twitchUser).subscribe(user => {
-            this.user = (<any>user).data[0];
-            console.log('user', this.user);
-          });
-        });
-        console.log('twitch', this.game);
-      },
-      err => console.log(err),
-      () => console.log('done loading twitch')
-    );
+  onElementReady($element) {
+    return new Promise(resolve => {
+      const waitForElement = () => {
+        if (
+          this.elementRef.nativeElement.ownerDocument.getElementById($element)
+        ) {
+          resolve($element);
+        } else {
+          window.requestAnimationFrame(waitForElement);
+        }
+      };
+      waitForElement();
+    });
+  }
+  ngOnInit() {}
+
+  loadPlayer() {
+    this.http
+      .get(`https://api.twitch.tv/kraken/streams/?game=Fortnite`, {
+        headers: { 'Client-ID': '69fkr6blp5udnsrmxytx2mjtzvwgk4' }
+      })
+      // of(twitchStream)
+      .subscribe(
+        (streams: any) => {
+          this.stream = streams.streams[0];
+          this.streams = streams.streams.slice(1, 5);
+          if (typeof window !== 'undefined' && (<any>window).Twitch) {
+            this.createPlayer();
+          }
+        },
+        err => console.log(err),
+        () => console.log('done loading twitch')
+      );
+  }
+
+  createPlayer() {
+    this.streamState = 'active';
+    this.onElementReady('twitch-embed').then(() => {
+      const options = {
+        channel: this.stream.channel.name,
+        width: '100%',
+        height: '100%',
+        theme: 'dark',
+        autoplay: false
+      };
+      this.player = new (<any>window).Twitch.Player('twitch-embed', options);
+    });
+  }
+
+  changeStream(stream) {
+    this.streamState = 'inactive';
+    const index = this.streams.indexOf(stream);
+    this.streams[index] = this.stream;
+    const iFrame = document.querySelector('iframe');
+    iFrame.parentNode.removeChild(iFrame);
+    this.stream = stream;
+    this.createPlayer();
   }
 }

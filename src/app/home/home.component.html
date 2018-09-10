@@ -1,0 +1,25 @@
+<div class="content"
+     [@homeState]="loading">
+  <app-twitch></app-twitch>
+
+  <div class="header">
+    <h1 class="title"> Top Links </h1>
+  </div>
+
+  <div class="card-container"
+       *ngFor="let link of links"
+       (click)="navigate(link.link)">
+    <div class="container">
+      <img [src]="link.image"
+           class="stream-img">
+      <div class="details-overlay">
+        <div class="details">
+          <div class="name">{{ link.name }}</div>
+          <div class="status-container">
+            <div class="stream-status">{{ link.description }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

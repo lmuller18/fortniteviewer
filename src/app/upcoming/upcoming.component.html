@@ -3,7 +3,8 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 <div class="main-content"
-     *ngIf="!loading && upcoming">
+     [@upcomingState]="loading">
+
   <div class="filter-header">
     <h1 class="store-type"> Upcoming </h1>
 

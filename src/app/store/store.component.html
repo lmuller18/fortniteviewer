@@ -3,7 +3,7 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 <div class="main-content"
-     *ngIf="!loading && store">
+     [@storeState]="loading">
 
   <div class="store-header">
     <h1 class="store-type"> Store </h1>

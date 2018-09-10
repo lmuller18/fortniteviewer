@@ -2,11 +2,40 @@ import { Component, OnInit } from '@angular/core';
 import * as news from '../../mock/news.json';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  styleUrls: ['./news.component.scss'],
+  animations: [
+    trigger('newsState', [
+      state(
+        'true',
+        style({
+          display: 'none',
+          visibility: 'hidden',
+          opacity: 0,
+          transition: 'visibility 0s, opacity 0.5s linear'
+        })
+      ),
+      state(
+        'false',
+        style({
+          visibility: 'visible',
+          opacity: 1
+        })
+      ),
+      transition('true => false', animate('500ms ease-in')),
+      transition('false => true', animate('500ms ease-out'))
+    ])
+  ]
 })
 export class NewsComponent implements OnInit {
   response: any;

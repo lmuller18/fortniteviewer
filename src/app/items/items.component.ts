@@ -9,11 +9,13 @@ import {
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as items from '../../mock/items.json';
+import { transitionAnimation } from '../transition.animation';
 
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss']
+  styleUrls: ['./items.component.scss'],
+  animations: [transitionAnimation]
 })
 export class ItemsComponent implements OnInit {
   response: any;

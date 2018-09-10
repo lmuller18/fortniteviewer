@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { transitionAnimation } from '../transition.animation';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -25,7 +26,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  animations: [transitionAnimation]
 })
 export class SearchComponent implements OnInit {
   usernameFormControl = new FormControl('', [Validators.required]);

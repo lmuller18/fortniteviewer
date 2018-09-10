@@ -1,43 +1,49 @@
-<div class="header">
-  <h1 class="title"> Top Stream </h1>
-  <div>
-    <button mat-raised-button
-            [color]="'primary'"
-            (click)="streamState === 'active' ? streamState = 'inactive' : streamState = 'active'">
-      {{ streamState === 'active' ? 'Hide' : 'Show'}} Stream
-    </button>
+<div [@transitionAnimation]=""
+     class="block">
+  <div class="header block">
+    <h1 class="title"> Top Stream </h1>
+    <div>
+      <button mat-raised-button
+              [color]="'primary'"
+              (click)="showStream ? showStream = false : createPlayer()">
+        {{ showStream ? 'Hide' : 'Show'}} Stream
+      </button>
+    </div>
   </div>
-</div>
 
-<div id="player-wrapper"
-     [@streamState]="streamState">
-  <div id="twitch-embed"
-       #twitch></div>
-</div>
-
-<div class="header">
-  <h3 class="title"> Other Streams </h3>
-  <div>
-    <button mat-raised-button
-            [color]="'primary'"
-            (click)="streamsState === 'active' ? streamsState = 'inactive' : streamsState = 'active'">
-      {{ streamsState === 'active' ? 'Hide' : 'Show'}} Streams
-    </button>
+  <div id="player-wrapper"
+       class="block"
+       *ngIf="showStream">
+    <div id="twitch-embed"
+         class="block"
+         #twitch></div>
   </div>
-</div>
 
-<div [@streamsState]="streamsState">
-  <div class="card-container"
-       *ngFor="let stream of streams"
-       (click)="changeStream(stream)">
-    <div class="container">
-      <img [src]="stream.preview.large"
-           class="stream-img">
-      <div class="details-overlay">
-        <div class="details">
-          <div class="name">{{ stream.channel.display_name }}</div>
-          <div class="status-container">
-            <div class="stream-status">{{ stream.channel.status }}</div>
+  <div class="header block">
+    <h3 class="title"> Other Streams </h3>
+    <div>
+      <button mat-raised-button
+              [color]="'primary'"
+              (click)="showStreams ? showStreams = false : showStreams = true">
+        {{ showStreams ? 'Hide' : 'Show'}} Streams
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="showStreams"
+       class="block">
+    <div class="card-container"
+         *ngFor="let stream of streams"
+         (click)="changeStream(stream)">
+      <div class="container">
+        <img [src]="stream.preview.large"
+             class="stream-img">
+        <div class="details-overlay">
+          <div class="details">
+            <div class="name">{{ stream.channel.display_name }}</div>
+            <div class="status-container">
+              <div class="stream-status">{{ stream.channel.status }}</div>
+            </div>
           </div>
         </div>
       </div>

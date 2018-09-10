@@ -2,9 +2,9 @@
      *ngIf="loading">
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
-<div class="main-content"
-     *ngIf="!loading && items">
-  <h1 class="store-type"> {{ query }} </h1>
+<div class="main-content block"
+     [@transitionAnimation]="">
+  <h1 class="store-type block"> {{ query }} </h1>
   <ng-container *ngFor="let item of items">
     <app-item [item]="item"></app-item>
   </ng-container>

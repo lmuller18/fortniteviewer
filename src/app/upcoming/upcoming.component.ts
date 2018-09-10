@@ -1,39 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { transitionAnimation } from '../transition.animation';
+
 @Component({
   selector: 'app-upcoming',
   templateUrl: './upcoming.component.html',
   styleUrls: ['./upcoming.component.scss'],
-  animations: [
-    trigger('upcomingState', [
-      state(
-        'true',
-        style({
-          display: 'none',
-          visibility: 'hidden',
-          opacity: 0,
-          transition: 'visibility 0s, opacity 0.5s linear'
-        })
-      ),
-      state(
-        'false',
-        style({
-          visibility: 'visible',
-          opacity: 1
-        })
-      ),
-      transition('true => false', animate('500ms ease-in')),
-      transition('false => true', animate('500ms ease-out'))
-    ])
-  ]
+  animations: [transitionAnimation]
 })
 export class UpcomingComponent implements OnInit {
   upcoming: any[];

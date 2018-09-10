@@ -1,15 +1,15 @@
-<div class="content"
-     [@homeState]="loading">
+<div class="content block"
+     [@transitionAnimation]="">
   <app-twitch></app-twitch>
 
-  <div class="header">
+  <div class="header block">
     <h1 class="title"> Top Links </h1>
   </div>
 
-  <div class="card-container"
+  <div class="card-container block"
        *ngFor="let link of links"
        (click)="navigate(link.link)">
-    <div class="container">
+    <div class="container block">
       <img [src]="link.image"
            class="stream-img">
       <div class="details-overlay">

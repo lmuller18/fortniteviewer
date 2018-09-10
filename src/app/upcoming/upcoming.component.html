@@ -2,10 +2,10 @@
      *ngIf="loading">
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
-<div class="main-content"
-     [@upcomingState]="loading">
+<div class="main-content block"
+     [@transitionAnimation]="">
 
-  <div class="filter-header">
+  <div class="filter-header block">
     <h1 class="store-type"> Upcoming </h1>
 
     <div>
@@ -47,7 +47,7 @@
     <app-item [item]="item"></app-item>
   </ng-container>
 
-  <div class="disclaimer">
+  <div class="disclaimer block">
     <span>All item images provided by
       <a href="https://www.fnbr.co">fnbr.co</a>
     </span>

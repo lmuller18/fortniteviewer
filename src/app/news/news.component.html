@@ -3,16 +3,18 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 
-<div class="main-content"
-     [@newsState]="loading">
+<div class="main-content block"
+     [@transitionAnimation]="">
+
   <ng-container *ngFor="let entry of news">
-    <div class="card-container">
-      <div class="news-container">
+    <div [@transitionAnimation]=""
+         class="card-container block">
+      <div class="news-container block">
         <img class="news-img"
              [src]="entry.image">
-        <div class="entry-container">
-          <div class="news-title">{{ entry.title }}</div>
-          <div class="news-body">{{ entry.body }}</div>
+        <div class="entry-container ">
+          <div class="news-title block">{{ entry.title }}</div>
+          <div class="news-body block">{{ entry.body }}</div>
         </div>
       </div>
     </div>

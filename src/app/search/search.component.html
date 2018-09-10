@@ -3,9 +3,10 @@
                [backgroundColor]="'primary'"
                class="player-tabs">
   <mat-tab [label]="'Player'">
-    <div class="search-form-container">
-      <mat-card class="search-card">
-        <div class="search-form">
+    <div [@transitionAnimation]=""
+         class="search-form-container block">
+      <mat-card class="search-card block">
+        <div class="search-form block">
           <mat-form-field>
             <input matInput
                    placeholder="Username"
@@ -37,9 +38,10 @@
   </mat-tab>
 
   <mat-tab [label]="'Items'">
-    <div class="search-form-container">
-      <mat-card class="search-card">
-        <div class="search-form">
+    <div [@transitionAnimation]=""
+         class="search-form-container block">
+      <mat-card class="search-card block">
+        <div class="search-form block">
           <mat-form-field>
             <input matInput
                    placeholder="Item Name"

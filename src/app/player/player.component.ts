@@ -9,11 +9,13 @@ import {
 } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { transitionAnimation } from '../transition.animation';
 
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
-  styleUrls: ['./player.component.scss']
+  styleUrls: ['./player.component.scss'],
+  animations: [transitionAnimation]
 })
 export class PlayerComponent implements OnInit {
   player: {

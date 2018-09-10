@@ -2,10 +2,10 @@
      *ngIf="loading">
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
-<div class="main-content"
-     [@storeState]="loading">
+<div class="main-content block"
+     [@transitionAnimation]="">
 
-  <div class="store-header">
+  <div class="store-header block">
     <h1 class="store-type"> Store </h1>
     <div>
       <button mat-raised-button

@@ -6,9 +6,12 @@
      *ngIf="!loading"
      [@transitionAnimation]="">
   <h1 class="store-type block"> {{ query }} </h1>
-  <ng-container *ngFor="let item of items">
-    <app-item [item]="item"></app-item>
-  </ng-container>
+
+  <div class="block">
+    <ng-container *ngFor="let item of items">
+      <app-item [item]="item"></app-item>
+    </ng-container>
+  </div>
 
   <div class="disclaimer">
     <span>All item images provided by

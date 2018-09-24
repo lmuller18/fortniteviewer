@@ -1,9 +1,8 @@
 .card-container {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
+  margin: 2rem auto;
   font-family: 'Luckiest Guy', cursive;
   color: white;
+  max-width: 512px;
 
   .container {
     position: relative;
@@ -13,6 +12,22 @@
       width: 100%;
       max-width: 90vw;
       height: auto;
+    }
+
+    .favorite-overlay {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding: 0.5rem;
+      text-align: right;
+
+      .check-icon {
+        height: unset;
+        width: unset;
+        font-size: 42px;
+        cursor: pointer;
+        opacity: 0.5;
+      }
     }
 
     .details-overlay {

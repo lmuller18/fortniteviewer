@@ -1,9 +1,13 @@
-<div class="card-container block"
-     [@transitionAnimation]="">
-  <div class="container block">
+<div class="card-container">
+  <div class="container">
     <img [src]="item.images.icon"
          [ngClass]="item.rarity"
-         class="item-img block">
+         class="item-img ">
+    <div class="favorite-overlay block">
+      <mat-icon class="check-icon"
+                [@changeState]="notify"
+                (click)="changeState()">add_alert</mat-icon>
+    </div>
     <div class="details-overlay block"
          [ngClass]="item.rarity + '-border'">
       <div class="details block">

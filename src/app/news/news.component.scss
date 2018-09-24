@@ -1,9 +1,8 @@
 .card-container {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
+  margin: 2rem auto;
   font-family: 'Luckiest Guy', cursive;
   color: blue;
+  max-width: 1024px;
   .news-container {
     position: relative;
 

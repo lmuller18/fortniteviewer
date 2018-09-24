@@ -3,6 +3,7 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 <div class="main-content block"
+     *ngIf="!loading"
      [@transitionAnimation]="">
   <h1 class="store-type block"> {{ query }} </h1>
   <ng-container *ngFor="let item of items">

@@ -4,6 +4,7 @@
 </div>
 
 <div class="main-content block"
+     *ngIf="!loading"
      [@transitionAnimation]="">
 
   <ng-container *ngFor="let entry of news">

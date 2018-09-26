@@ -1,19 +1,21 @@
 .content {
+  background-attachment: fixed;
+  background-image: url('../../assets/img/purple.jpg');
+  border-radius: 15px 15px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   margin-top: 66px;
   @media (max-width: 599px) {
     margin-top: 57px;
   }
-  overflow: auto;
-  position: fixed;
-  min-height: 95vh;
+
   max-height: 100%;
+  min-height: 95vh;
+  padding-bottom: 3rem;
+  position: fixed;
+  overflow: auto;
   width: 100%;
-  // background-image: url(https://cdn.dribbble.com/users/101444/screenshots/2300056/attachments/435214/97.png);
-  background-image: url('../../assets/img/tangerine.webp');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  border-radius: 15px 15px 0;
 
   .header {
     margin: 0 30px;

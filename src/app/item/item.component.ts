@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material';
 export class ItemComponent implements OnInit {
   @Input()
   item: any;
+  loaded = false;
 
   notify = false;
   message = 'Notifications are coming soon!';

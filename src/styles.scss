@@ -12,10 +12,7 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('./assets/img/purple.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  background-color: rgb(245, 245, 245);
 }
 
 * {
@@ -24,10 +21,22 @@ body {
 
 .main-content {
   padding: 30px;
-  padding-top: 53px;
+  padding-top: 0;
+  margin-top: 66px;
+  @media (max-width: 599px) {
+    margin-top: 57px;
+  }
+  width: 100%;
   overflow: auto;
+  position: fixed;
   min-height: 95vh;
   max-height: 100%;
+  // background-image: url(https://cdn.dribbble.com/users/101444/screenshots/2300056/attachments/435214/97.png);
+  background-image: url('./assets/img/tangerine.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  border-radius: 15px 15px 0;
 }
 
 .loader {

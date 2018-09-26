@@ -1,76 +1,77 @@
-<mat-tab-group mat-stretch-tabs
-               headerPosition="below"
-               [backgroundColor]="'primary'"
-               class="player-tabs">
-  <mat-tab [label]="'Player'">
-    <div [@transitionAnimation]=""
-         class="search-form-container block">
-      <mat-card class="search-card block">
-        <div class="search-form block">
-          <mat-form-field>
-            <input matInput
-                   placeholder="Username"
-                   [formControl]="usernameFormControl"
-                   [errorStateMatcher]="matcher">
-            <mat-hint>Epic Username</mat-hint>
-            <mat-error *ngIf="usernameFormControl.hasError('required')">
-              Username is
-              <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-select placeholder="Platform"
-                        [formControl]="platformFormControl"
-                        name="food">
-              <mat-option *ngFor="let platform of platforms"
-                          [value]="platform.key">
-                {{platform.value}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+<div class="main-content">
+  <mat-tab-group mat-stretch-tabs
+                 headerPosition="below"
+                 [backgroundColor]="'primary'"
+                 class="player-tabs">
+    <mat-tab [label]="'Player'">
+      <div [@transitionAnimation]=""
+           class="search-form-container block">
+        <mat-card class="search-card block">
+          <div class="search-form block">
+            <mat-form-field>
+              <input matInput
+                     placeholder="Username"
+                     [formControl]="usernameFormControl"
+                     [errorStateMatcher]="matcher">
+              <mat-hint>Epic Username</mat-hint>
+              <mat-error *ngIf="usernameFormControl.hasError('required')">
+                Username is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Platform"
+                          [formControl]="platformFormControl"
+                          name="food">
+                <mat-option *ngFor="let platform of platforms"
+                            [value]="platform.key">
+                  {{platform.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-          <button mat-button
-                  color="primary"
-                  (click)="searchPlayer()">Search</button>
-        </div>
-      </mat-card>
-    </div>
-  </mat-tab>
+            <button mat-button
+                    color="primary"
+                    (click)="searchPlayer()">Search</button>
+          </div>
+        </mat-card>
+      </div>
+    </mat-tab>
 
-  <mat-tab [label]="'Items'">
-    <div [@transitionAnimation]=""
-         class="search-form-container block">
-      <mat-card class="search-card block">
-        <div class="search-form block">
-          <mat-form-field>
-            <input matInput
-                   placeholder="Item Name"
-                   [formControl]="itemFormControl"
-                   [errorStateMatcher]="matcher">
-            <mat-error *ngIf="itemFormControl.hasError('required')">
-              Item name is
-              <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-select placeholder="Type"
-                        [formControl]="itemTypeFormControl">
-              <mat-option *ngFor="let type of itemTypes"
-                          [value]="type.key">
-                {{type.value}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+    <mat-tab [label]="'Items'">
+      <div [@transitionAnimation]=""
+           class="search-form-container block">
+        <mat-card class="search-card block">
+          <div class="search-form block">
+            <mat-form-field>
+              <input matInput
+                     placeholder="Item Name"
+                     [formControl]="itemFormControl"
+                     [errorStateMatcher]="matcher">
+              <mat-error *ngIf="itemFormControl.hasError('required')">
+                Item name is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Type"
+                          [formControl]="itemTypeFormControl">
+                <mat-option *ngFor="let type of itemTypes"
+                            [value]="type.key">
+                  {{type.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-          <button mat-button
-                  color="primary"
-                  (click)="searchItem()">Search</button>
-        </div>
-      </mat-card>
-    </div>
-  </mat-tab>
-</mat-tab-group>
-
+            <button mat-button
+                    color="primary"
+                    (click)="searchItem()">Search</button>
+          </div>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
 
 <!--
 

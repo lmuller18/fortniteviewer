@@ -3,8 +3,9 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 
-<div class="main-content">
-  <div class="content ">
+<div class="main-content"
+     *ngIf="!loading">
+  <div class="content">
     <mat-accordion>
       <ng-container *ngFor="let week of challenges; let i = index">
         <div [@transitionAnimation]=""

@@ -4,14 +4,29 @@
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
           "/index.html",
           "/*.css",
           "/*.js",
-          "/assets/**"
+          "/assets/icons/**"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/icon?family=Material+Icons",
+          "https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700",
+          "https://fonts.googleapis.com/css?family=Luckiest+Guy",
+          "https://fonts.googleapis.com/css?family=Roboto+Mono"
         ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/assets/img/**"]
       }
     }
   ]

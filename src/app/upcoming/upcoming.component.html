@@ -49,11 +49,11 @@
     <ng-container *ngFor="let item of upcoming | filter:nameFilter:typeFilter:rarityFilter">
       <app-item [item]="item"></app-item>
     </ng-container>
-  </div>
 
-  <div class="disclaimer block">
-    <span>All item images provided by
-      <a href="https://www.fnbr.co">fnbr.co</a>
-    </span>
+    <div class="disclaimer">
+      <span>All item images provided by
+        <a href="https://www.fnbr.co">fnbr.co</a>
+      </span>
+    </div>
   </div>
 </div>

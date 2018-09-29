@@ -24,6 +24,7 @@ import { ErrorModule } from './error/error.module';
 import { ItemsModule } from './items/items.module';
 import { UpcomingModule } from './upcoming/upcoming.module';
 import { HomeModule } from './home/home.module';
+import { AngularFireModule } from '@angular/fire';
 
 const routes: Routes = [
   {
@@ -46,6 +47,7 @@ const routes: Routes = [
     ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production
     }),
+    AngularFireModule.initializeApp(environment.firebase),
     NewsModule,
     StoreModule,
     ChallengesModule,

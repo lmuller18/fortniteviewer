@@ -19,7 +19,8 @@
     <div class="details-overlay block"
          [ngClass]="item.rarity + '-border'">
       <div class="details block">
-        <div class="name">{{item.name}}</div>
+        <div class="name"
+             (click)="fcm.getPermission()">{{item.name}}</div>
         <div *ngIf="item.price"
              class="price">
           <div class="amount">{{item.price}}</div>

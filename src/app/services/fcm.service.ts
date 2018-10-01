@@ -4,10 +4,10 @@ import { AngularFireFunctions } from '@angular/fire/functions';
 import { MatSnackBar } from '@angular/material';
 import { tap } from 'rxjs/operators';
 
-import * as app from 'firebase';
-const _messaging = app.messaging();
-_messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
-_messaging.onMessage = _messaging.onMessage.bind(_messaging);
+// import * as app from 'firebase';
+// const _messaging = app.messaging();
+// _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
+// _messaging.onMessage = _messaging.onMessage.bind(_messaging);
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,7 @@ export class FcmService {
   }
 
   getPermission() {
+    console.log('HERE');
     return this.afMessaging.requestToken.pipe(
       tap(token => (this.token = token))
     );

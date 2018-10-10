@@ -25,19 +25,35 @@ body {
   background-attachment: fixed;
   background-size: cover;
   border-radius: 15px 15px 0 0;
-  max-height: 97vh;
 
+  max-height: calc(100% - 66px);
   margin-top: 66px;
   @media (max-width: 599px) {
+    max-height: calc(100% - 57px);
     margin-top: 57px;
   }
 
-  min-height: 95vh;
+  // min-height: 95vh;
   overflow: auto;
   padding: 30px;
   padding-top: 0;
   position: fixed;
   width: 100%;
+}
+
+.disclaimer {
+  color: white;
+  min-height: 2rem;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  padding: 1rem;
+  padding-bottom: 1.75rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .loader {
@@ -91,22 +107,6 @@ body {
 
 .legendary-border {
   border: 2px solid #e98d4b;
-}
-
-.disclaimer {
-  color: white;
-  min-height: 2rem;
-  margin-bottom: 3rem;
-  width: 100%;
-  position: absolute;
-  right: 0;
-  padding: 1rem;
-  padding-bottom: 1.75rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  a {
-    text-decoration: none;
-    color: white;
-  }
 }
 
 .mat-drawer-backdrop {

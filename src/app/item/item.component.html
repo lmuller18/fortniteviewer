@@ -11,7 +11,8 @@
          *ngIf="!loaded"
          [ngClass]="item.rarity"
          class="item-img">
-    <div class="favorite-overlay block">
+    <div class="favorite-overlay block"
+         *ngIf="fcm.token">
       <mat-icon class="check-icon"
                 [@changeState]="notify"
                 (click)="changeState()">add_alert</mat-icon>

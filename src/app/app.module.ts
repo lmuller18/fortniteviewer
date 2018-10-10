@@ -50,6 +50,9 @@ const routes: Routes = [
     ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production
     }),
+    ServiceWorkerModule.register('/firebase-messaging-sw.js', {
+      enabled: true
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireMessagingModule,
     AngularFireFunctionsModule,

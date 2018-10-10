@@ -22,10 +22,10 @@ export class ItemComponent implements OnInit {
 
   changeState() {
     if (this.notify) {
-      this.fcm.unsub('discounts');
+      this.fcm.unsub(this.item.name);
       this.notify = false;
     } else {
-      this.fcm.sub('discounts');
+      this.fcm.sub(this.item.name);
       this.notify = true;
     }
   }

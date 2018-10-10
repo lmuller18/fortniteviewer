@@ -4,10 +4,12 @@ import { AngularFireFunctions } from '@angular/fire/functions';
 import { MatSnackBar } from '@angular/material';
 import { tap } from 'rxjs/operators';
 
-// import * as app from 'firebase';
-// const _messaging = app.messaging();
-// _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
-// _messaging.onMessage = _messaging.onMessage.bind(_messaging);
+import * as app from 'firebase';
+import { environment } from '../../environments/environment.prod';
+app.initializeApp(environment.firebase);
+const _messaging = app.messaging();
+_messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
+_messaging.onMessage = _messaging.onMessage.bind(_messaging);
 
 @Injectable({
   providedIn: 'root'
@@ -29,15 +31,32 @@ export class FcmService {
 
   getPermission() {
     console.log('HERE');
-    return this.afMessaging.requestToken.pipe(
-      tap(token => (this.token = token))
+
+    this.afMessaging.requestPermission.subscribe(
+      () => {
+        console.log(
+          this.afMessaging.getToken.subscribe(token => (this.token = token))
+        );
+        console.log('Permission granted!');
+      },
+      error => {
+        console.error(error);
+      }
     );
+
+    // return this.afMessaging.requestToken.pipe(
+    //   tap(token => {
+    //     console.log('token: ', token);
+    //     this.token = token;
+    //   })
+    // );
   }
 
   showMessage() {
     return this.afMessaging.messages.pipe(
       tap(msg => {
         const body: any = (msg as any).notification.body;
+        console.log(body);
         this.makeToast(body);
       })
     );
@@ -45,14 +64,20 @@ export class FcmService {
 
   sub(topic) {
     this.fun
-      .httpsCallable('subscribeToTopic')({ topic, token: this.token })
+      .httpsCallable('subscribeToTopic')({
+        topic: topic.toLowerCase().replace(/[^a-z0-9]/gi, ''),
+        token: this.token
+      })
       .pipe(tap(_ => this.makeToast(`Subscribed to ${topic}`)))
       .subscribe();
   }
 
   unsub(topic) {
     this.fun
-      .httpsCallable('unsubscribeToTopic')({ topic, token: this.token })
+      .httpsCallable('unsubscribeToTopic')({
+        topic: topic.toLowerCase().replace(/[^a-z0-9]/gi, ''),
+        token: this.token
+      })
       .pipe(tap(_ => this.makeToast(`Unsubscribed to ${topic}`)))
       .subscribe();
   }

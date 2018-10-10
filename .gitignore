@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+/functions/node_modules
 
 # IDEs and editors
 /.idea
@@ -37,3 +38,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+functions/firebase-debug.log
+.firebase/hosting.ZGlzdFxmb3J0bml0ZXZpZXdlcg.cache
+functions/lib/index.js
+functions/lib/index.js.map

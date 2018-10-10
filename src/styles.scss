@@ -27,13 +27,14 @@ body {
   border-radius: 15px 15px 0 0;
 
   max-height: calc(100% - 66px);
+  height: calc(100% - 66px);
   margin-top: 66px;
   @media (max-width: 599px) {
     max-height: calc(100% - 57px);
+    height: calc(100% - 57px);
     margin-top: 57px;
   }
 
-  // min-height: 95vh;
   overflow: auto;
   padding: 30px;
   padding-top: 0;
@@ -45,10 +46,9 @@ body {
   color: white;
   min-height: 2rem;
   width: 100%;
-  position: absolute;
   right: 0;
+  position: absolute;
   padding: 1rem;
-  padding-bottom: 1.75rem;
   background-color: rgba(0, 0, 0, 0.5);
   a {
     text-decoration: none;

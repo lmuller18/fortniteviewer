@@ -44,8 +44,12 @@
       .stream-img {
         display: block;
         width: 100%;
-        max-width: 90vw;
+        max-width: 700px;
+        @media (max-width: 716px) {
+          max-width: 90vw;
+        }
         height: auto;
+        cursor: pointer;
       }
 
       .details-overlay {

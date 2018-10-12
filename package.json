@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "fcm": "concat dist/fortniteviewer/ngsw-worker.js fcm.js -o dist/fortniteviewer/combined-worker.js",
-    "deploy:fire": "rm -rf dist && ng build --prod && firebase deploy --only hosting",
+    "deploy:fire": "rm -rf dist && ng build --prod && concat dist/fortniteviewer/ngsw-worker.js src/firebase-messaging-sw.js -o dist/fortniteviewer/combined-ngsw-worker.js && firebase deploy --only hosting",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

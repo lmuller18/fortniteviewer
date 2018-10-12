@@ -47,11 +47,8 @@ const routes: Routes = [
     MatIconModule,
     MatListModule,
     MatButtonModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {
+    ServiceWorkerModule.register('/combined-ngsw-worker.js', {
       enabled: environment.production
-    }),
-    ServiceWorkerModule.register('/firebase-messaging-sw.js', {
-      enabled: true
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireMessagingModule,

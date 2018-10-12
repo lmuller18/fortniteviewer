@@ -30,8 +30,6 @@ export class FcmService {
   }
 
   getPermission() {
-    console.log('HERE');
-
     this.afMessaging.requestPermission.subscribe(
       () => {
         console.log(
@@ -43,20 +41,13 @@ export class FcmService {
         console.error(error);
       }
     );
-
-    // return this.afMessaging.requestToken.pipe(
-    //   tap(token => {
-    //     console.log('token: ', token);
-    //     this.token = token;
-    //   })
-    // );
   }
 
   showMessage() {
     return this.afMessaging.messages.pipe(
       tap(msg => {
         const body: any = (msg as any).notification.body;
-        console.log(body);
+        console.log('notification', body);
         this.makeToast(body);
       })
     );

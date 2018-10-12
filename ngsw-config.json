@@ -11,7 +11,9 @@
           "/index.html",
           "/*.css",
           "/*.js",
-          "/assets/icons/**"
+          "/assets/icons/**",
+          "/assets/img/purple.jpg",
+          "/assets/img/tangerine.jpg"
         ],
         "urls": [
           "https://fonts.googleapis.com/icon?family=Material+Icons",

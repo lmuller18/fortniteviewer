@@ -1,13 +1,16 @@
 <div class="card-container">
   <div class="container">
-    <img [src]="item.images.icon"
+    <img alt="load image"
+         [src]="item.images.icon"
          (load)="loaded = true"
          [hidden]="true">
-    <img [src]="item.images.icon"
+    <img [alt]="item.name"
+         [src]="item.images.icon"
          *ngIf="loaded"
          [ngClass]="item.rarity"
          class="item-img">
-    <img src="../../assets/img/default.png"
+    <img alt="loading item"
+         src="../../assets/img/default.png"
          *ngIf="!loaded"
          [ngClass]="item.rarity"
          class="item-img">
@@ -24,7 +27,8 @@
         <div *ngIf="item.price"
              class="price">
           <div class="amount">{{item.price}}</div>
-          <img *ngIf="item.priceIconLink"
+          <img alt="currency"
+               *ngIf="item.priceIconLink"
                class="price-img"
                [src]="item.priceIconLink">
         </div>

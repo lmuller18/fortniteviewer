@@ -8,10 +8,11 @@
 
   <div class="card-container block"
        *ngFor="let link of links">
-    <div class="container block">
-      <img [src]="link.image"
-           class="stream-img"
-           (click)="navigate(link.link)">
+    <div class="container block"
+         (click)="navigate(link.link)">
+      <img alt="site"
+           [src]="link.image"
+           class="stream-img">
       <div class="details-overlay">
         <div class="details">
           <div class="name">{{ link.name }}</div>

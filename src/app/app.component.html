@@ -2,6 +2,7 @@
   <mat-sidenav class="side-nav"
                #snav>
     <img class="banner"
+         alt="fortnite banner"
          src="../assets/img/fortnite.jpg"
          width="100%">
     <mat-nav-list (click)="snav.close()">
@@ -48,13 +49,15 @@
         </div>
       </a>
     </mat-nav-list>
-    <img class="bottom-img"
+    <img alt="drift"
+         class="bottom-img"
          src="../assets/img/drift.png"
          width="100%">
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
-      <button mat-icon-button
+      <button name="Nav Toggle"
+              mat-icon-button
               (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>

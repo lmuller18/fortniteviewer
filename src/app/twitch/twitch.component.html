@@ -4,6 +4,7 @@
     <h1 class="title"> Top Stream </h1>
     <div>
       <button mat-raised-button
+              name="Toggle Stream"
               [color]="'primary'"
               (click)="showStream ? showStream = false : createPlayer()">
         {{ showStream ? 'Hide' : 'Show'}} Stream
@@ -23,6 +24,7 @@
     <h3 class="title"> Other Streams </h3>
     <div>
       <button mat-raised-button
+              name="Toggle Streams"
               [color]="'primary'"
               (click)="showStreams ? showStreams = false : showStreams = true">
         {{ showStreams ? 'Hide' : 'Show'}} Streams
@@ -36,7 +38,8 @@
          *ngFor="let stream of streams"
          (click)="changeStream(stream)">
       <div class="container">
-        <img [src]="stream.preview.large"
+        <img alt="stream preview"
+             [src]="stream.preview.large"
              class="stream-img">
         <div class="details-overlay">
           <div class="details">

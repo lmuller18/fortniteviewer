@@ -18,7 +18,13 @@ export class ItemComponent implements OnInit {
 
   constructor(public fcm: FcmService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.fcm.subscriptions.subscribe(subs => {
+      this.notify = subs.includes(
+        this.item.name.toLowerCase().replace(/[^a-z0-9]/gi, '')
+      );
+    });
+  }
 
   changeState() {
     if (this.notify) {

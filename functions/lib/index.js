@@ -14,10 +14,67 @@ const rq = require("request");
 admin.initializeApp();
 exports.subscribeToTopic = functions.https.onCall((data, context) => __awaiter(this, void 0, void 0, function* () {
     yield admin.messaging().subscribeToTopic(data.token, data.topic);
+    yield admin
+        .firestore()
+        .collection('tokens')
+        .doc(data.token)
+        .get()
+        .then((doc) => __awaiter(this, void 0, void 0, function* () {
+        if (!doc.exists) {
+            return yield admin
+                .firestore()
+                .collection('tokens')
+                .doc(data.token)
+                .create({ subscriptions: [data.topic] });
+        }
+        else {
+            const current = doc.data().subscriptions;
+            if (current.indexOf(data.topic, 0) > -1) {
+                console.log('Subscription already exists');
+                return null;
+            }
+            return yield admin
+                .firestore()
+                .collection('tokens')
+                .doc(data.token)
+                .update({ subscriptions: [...current, data.topic] });
+        }
+    }))
+        .catch(error => {
+        console.log(error);
+        return;
+    });
     return `subscribed to ${data.topic}`;
 }));
 exports.unsubscribeFromTopic = functions.https.onCall((data, context) => __awaiter(this, void 0, void 0, function* () {
     yield admin.messaging().unsubscribeFromTopic(data.token, data.topic);
+    yield admin
+        .firestore()
+        .collection('tokens')
+        .doc(data.token)
+        .get()
+        .then((doc) => __awaiter(this, void 0, void 0, function* () {
+        if (!doc.exists) {
+            console.log('No such document!');
+            return null;
+        }
+        else {
+            const current = doc.data().subscriptions;
+            const index = current.indexOf(data.topic, 0);
+            if (index > -1) {
+                current.splice(index, 1);
+            }
+            return yield admin
+                .firestore()
+                .collection('tokens')
+                .doc(data.token)
+                .update({ subscriptions: current });
+        }
+    }))
+        .catch(error => {
+        console.log(error);
+        return;
+    });
     return `unsubscribed to ${data.topic}`;
 }));
 exports.notifyStore = functions.firestore

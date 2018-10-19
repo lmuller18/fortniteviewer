@@ -28,6 +28,7 @@ import { AngularFireModule } from '@angular/fire';
 import * as firebase from 'firebase';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 const routes: Routes = [
   {
@@ -53,6 +54,7 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireMessagingModule,
     AngularFireFunctionsModule,
+    AngularFirestoreModule,
     NewsModule,
     StoreModule,
     ChallengesModule,

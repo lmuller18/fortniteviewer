@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/messaging';
 import { AngularFireFunctions } from '@angular/fire/functions';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material';
 import { tap } from 'rxjs/operators';
 
 import * as app from 'firebase';
 import { environment } from '../../environments/environment.prod';
+import { BehaviorSubject } from 'rxjs';
 app.initializeApp(environment.firebase);
 const _messaging = app.messaging();
 _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
@@ -16,9 +18,11 @@ _messaging.onMessage = _messaging.onMessage.bind(_messaging);
 })
 export class FcmService {
   token;
+  subscriptions: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   constructor(
     private afMessaging: AngularFireMessaging,
+    private afStore: AngularFirestore,
     private fun: AngularFireFunctions,
     private snackBar: MatSnackBar
   ) {}
@@ -33,7 +37,18 @@ export class FcmService {
     this.afMessaging.requestPermission.subscribe(
       () => {
         console.log(
-          this.afMessaging.getToken.subscribe(token => (this.token = token))
+          this.afMessaging.getToken.subscribe(token => {
+            this.token = token;
+            this.afStore
+              .collection('tokens')
+              .doc(this.token)
+              .get()
+              .subscribe(doc => {
+                if (doc.exists) {
+                  this.subscriptions.next(doc.data().subscriptions);
+                }
+              });
+          })
         );
         console.log('Permission granted!');
       },
@@ -53,6 +68,10 @@ export class FcmService {
     );
   }
 
+  getSubscriptions() {
+    return this.subscriptions.asObservable();
+  }
+
   sub(topic) {
     this.fun
       .httpsCallable('subscribeToTopic')({
@@ -65,7 +84,7 @@ export class FcmService {
 
   unsub(topic) {
     this.fun
-      .httpsCallable('unsubscribeToTopic')({
+      .httpsCallable('unsubscribeFromTopic')({
         topic: topic.toLowerCase().replace(/[^a-z0-9]/gi, ''),
         token: this.token
       })

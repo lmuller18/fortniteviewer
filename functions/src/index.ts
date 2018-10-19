@@ -8,6 +8,36 @@ export const subscribeToTopic = functions.https.onCall(
   async (data, context) => {
     await admin.messaging().subscribeToTopic(data.token, data.topic);
 
+    await admin
+      .firestore()
+      .collection('tokens')
+      .doc(data.token)
+      .get()
+      .then(async doc => {
+        if (!doc.exists) {
+          return await admin
+            .firestore()
+            .collection('tokens')
+            .doc(data.token)
+            .create({ subscriptions: [data.topic] });
+        } else {
+          const current = doc.data().subscriptions as Array<String>;
+          if (current.indexOf(data.topic, 0) > -1) {
+            console.log('Subscription already exists');
+            return null;
+          }
+          return await admin
+            .firestore()
+            .collection('tokens')
+            .doc(data.token)
+            .update({ subscriptions: [...current, data.topic] });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        return;
+      });
+
     return `subscribed to ${data.topic}`;
   }
 );
@@ -15,6 +45,33 @@ export const subscribeToTopic = functions.https.onCall(
 export const unsubscribeFromTopic = functions.https.onCall(
   async (data, context) => {
     await admin.messaging().unsubscribeFromTopic(data.token, data.topic);
+
+    await admin
+      .firestore()
+      .collection('tokens')
+      .doc(data.token)
+      .get()
+      .then(async doc => {
+        if (!doc.exists) {
+          console.log('No such document!');
+          return null;
+        } else {
+          const current = doc.data().subscriptions as Array<String>;
+          const index = current.indexOf(data.topic, 0);
+          if (index > -1) {
+            current.splice(index, 1);
+          }
+          return await admin
+            .firestore()
+            .collection('tokens')
+            .doc(data.token)
+            .update({ subscriptions: current });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        return;
+      });
 
     return `unsubscribed to ${data.topic}`;
   }

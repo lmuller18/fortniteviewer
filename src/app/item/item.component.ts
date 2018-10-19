@@ -19,19 +19,23 @@ export class ItemComponent implements OnInit {
   constructor(public fcm: FcmService) {}
 
   ngOnInit() {
-    this.fcm.subscriptions.subscribe(subs => {
-      this.notify = subs.includes(
-        this.item.name.toLowerCase().replace(/[^a-z0-9]/gi, '')
-      );
+    const topic = this.item.name + this.item.type;
+    const sub = {
+      item: this.item.name,
+      type: this.item.type,
+      topic
+    };
+    this.fcm.getIsSubscribed(sub).subscribe(subbed => {
+      this.notify = subbed;
     });
   }
 
   changeState() {
     if (this.notify) {
-      this.fcm.unsub(this.item.name);
+      this.fcm.unsub(this.item.name, this.item.type);
       this.notify = false;
     } else {
-      this.fcm.sub(this.item.name);
+      this.fcm.sub(this.item.name, this.item.type);
       this.notify = true;
     }
   }

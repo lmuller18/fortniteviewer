@@ -13,7 +13,8 @@ const admin = require("firebase-admin");
 const rq = require("request");
 admin.initializeApp();
 exports.subscribeToTopic = functions.https.onCall((data, context) => __awaiter(this, void 0, void 0, function* () {
-    yield admin.messaging().subscribeToTopic(data.token, data.topic);
+    const topic = data.topic.toLowerCase().replace(/[^a-z0-9]/gi, '');
+    yield admin.messaging().subscribeToTopic(data.token, topic);
     yield admin
         .firestore()
         .collection('tokens')
@@ -25,11 +26,11 @@ exports.subscribeToTopic = functions.https.onCall((data, context) => __awaiter(t
                 .firestore()
                 .collection('tokens')
                 .doc(data.token)
-                .create({ subscriptions: [data.topic] });
+                .create({ subscriptions: [data.details] });
         }
         else {
             const current = doc.data().subscriptions;
-            if (current.indexOf(data.topic, 0) > -1) {
+            if (itemIndex(current, data.details) > -1) {
                 console.log('Subscription already exists');
                 return null;
             }
@@ -37,7 +38,7 @@ exports.subscribeToTopic = functions.https.onCall((data, context) => __awaiter(t
                 .firestore()
                 .collection('tokens')
                 .doc(data.token)
-                .update({ subscriptions: [...current, data.topic] });
+                .update({ subscriptions: [...current, data.details] });
         }
     }))
         .catch(error => {
@@ -47,7 +48,8 @@ exports.subscribeToTopic = functions.https.onCall((data, context) => __awaiter(t
     return `subscribed to ${data.topic}`;
 }));
 exports.unsubscribeFromTopic = functions.https.onCall((data, context) => __awaiter(this, void 0, void 0, function* () {
-    yield admin.messaging().unsubscribeFromTopic(data.token, data.topic);
+    const topic = data.topic.toLowerCase().replace(/[^a-z0-9]/gi, '');
+    yield admin.messaging().unsubscribeFromTopic(data.token, topic);
     yield admin
         .firestore()
         .collection('tokens')
@@ -60,7 +62,7 @@ exports.unsubscribeFromTopic = functions.https.onCall((data, context) => __await
         }
         else {
             const current = doc.data().subscriptions;
-            const index = current.indexOf(data.topic, 0);
+            const index = itemIndex(current, data.details);
             if (index > -1) {
                 current.splice(index, 1);
             }
@@ -77,6 +79,15 @@ exports.unsubscribeFromTopic = functions.https.onCall((data, context) => __await
     });
     return `unsubscribed to ${data.topic}`;
 }));
+function itemIndex(subs, item) {
+    let location = -1;
+    subs.forEach((sub, index) => {
+        if (sub.item === item.item && sub.type === item.type) {
+            location = index;
+        }
+    });
+    return location;
+}
 exports.notifyStore = functions.firestore
     .document('store/{date}')
     .onCreate((snapshot) => __awaiter(this, void 0, void 0, function* () {

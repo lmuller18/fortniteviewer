@@ -6,7 +6,8 @@ admin.initializeApp();
 
 export const subscribeToTopic = functions.https.onCall(
   async (data, context) => {
-    await admin.messaging().subscribeToTopic(data.token, data.topic);
+    const topic = data.topic.toLowerCase().replace(/[^a-z0-9]/gi, '');
+    await admin.messaging().subscribeToTopic(data.token, topic);
 
     await admin
       .firestore()
@@ -19,10 +20,10 @@ export const subscribeToTopic = functions.https.onCall(
             .firestore()
             .collection('tokens')
             .doc(data.token)
-            .create({ subscriptions: [data.topic] });
+            .create({ subscriptions: [data.details] });
         } else {
-          const current = doc.data().subscriptions as Array<String>;
-          if (current.indexOf(data.topic, 0) > -1) {
+          const current = doc.data().subscriptions as Array<any>;
+          if (itemIndex(current, data.details) > -1) {
             console.log('Subscription already exists');
             return null;
           }
@@ -30,7 +31,7 @@ export const subscribeToTopic = functions.https.onCall(
             .firestore()
             .collection('tokens')
             .doc(data.token)
-            .update({ subscriptions: [...current, data.topic] });
+            .update({ subscriptions: [...current, data.details] });
         }
       })
       .catch(error => {
@@ -44,7 +45,9 @@ export const subscribeToTopic = functions.https.onCall(
 
 export const unsubscribeFromTopic = functions.https.onCall(
   async (data, context) => {
-    await admin.messaging().unsubscribeFromTopic(data.token, data.topic);
+    const topic = data.topic.toLowerCase().replace(/[^a-z0-9]/gi, '');
+
+    await admin.messaging().unsubscribeFromTopic(data.token, topic);
 
     await admin
       .firestore()
@@ -56,8 +59,8 @@ export const unsubscribeFromTopic = functions.https.onCall(
           console.log('No such document!');
           return null;
         } else {
-          const current = doc.data().subscriptions as Array<String>;
-          const index = current.indexOf(data.topic, 0);
+          const current = doc.data().subscriptions as Array<any>;
+          const index = itemIndex(current, data.details);
           if (index > -1) {
             current.splice(index, 1);
           }
@@ -76,6 +79,16 @@ export const unsubscribeFromTopic = functions.https.onCall(
     return `unsubscribed to ${data.topic}`;
   }
 );
+
+function itemIndex(subs, item): number {
+  let location = -1;
+  subs.forEach((sub, index) => {
+    if (sub.item === item.item && sub.type === item.type) {
+      location = index;
+    }
+  });
+  return location;
+}
 
 export const notifyStore = functions.firestore
   .document('store/{date}')

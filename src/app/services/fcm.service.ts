@@ -70,23 +70,51 @@ export class FcmService {
     return this.subscriptions.asObservable();
   }
 
-  sub(topic) {
+  getIsSubscribed(topic) {
+    const subscribed = new BehaviorSubject<boolean>(false);
+    this.subscriptions.subscribe(subs => {
+      let found = false;
+      subs.forEach(sub => {
+        if (sub.item === topic.item && sub.type === topic.type) {
+          found = true;
+        }
+      });
+      subscribed.next(found);
+    });
+    return subscribed.asObservable();
+  }
+
+  sub(item: string, type: string) {
+    const topic = item + type;
+    const details = {
+      item,
+      type,
+      topic
+    };
     this.fun
       .httpsCallable('subscribeToTopic')({
-        topic: topic.toLowerCase().replace(/[^a-z0-9]/gi, ''),
-        token: this.token
+        topic: topic,
+        token: this.token,
+        details
       })
-      .pipe(tap(_ => this.makeToast(`Subscribed to ${topic}`)))
+      .pipe(tap(_ => this.makeToast(`Subscribed to ${item}`)))
       .subscribe();
   }
 
-  unsub(topic) {
+  unsub(item: string, type: string) {
+    const topic = item + type;
+    const details = {
+      item,
+      type,
+      topic
+    };
     this.fun
       .httpsCallable('unsubscribeFromTopic')({
-        topic: topic.toLowerCase().replace(/[^a-z0-9]/gi, ''),
-        token: this.token
+        topic: topic,
+        token: this.token,
+        details
       })
-      .pipe(tap(_ => this.makeToast(`Unsubscribed to ${topic}`)))
+      .pipe(tap(_ => this.makeToast(`Unsubscribed to ${item}`)))
       .subscribe();
   }
 }

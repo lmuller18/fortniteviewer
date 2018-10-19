@@ -46,7 +46,7 @@
     </div>
   </mat-card>
 
-  <div class="block">
+  <div class="block items">
     <ng-container *ngFor="let item of upcoming | filter:nameFilter:typeFilter:rarityFilter">
       <app-item [item]="item"></app-item>
     </ng-container>

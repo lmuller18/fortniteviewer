@@ -36,20 +36,18 @@ export class FcmService {
   getPermission() {
     this.afMessaging.requestPermission.subscribe(
       () => {
-        console.log(
-          this.afMessaging.getToken.subscribe(token => {
-            this.token = token;
-            this.afStore
-              .collection('tokens')
-              .doc(this.token)
-              .get()
-              .subscribe(doc => {
-                if (doc.exists) {
-                  this.subscriptions.next(doc.data().subscriptions);
-                }
-              });
-          })
-        );
+        this.afMessaging.getToken.subscribe(token => {
+          this.token = token;
+          this.afStore
+            .collection('tokens')
+            .doc(this.token)
+            .get()
+            .subscribe(doc => {
+              if (doc.exists) {
+                this.subscriptions.next(doc.data().subscriptions);
+              }
+            });
+        });
         console.log('Permission granted!');
       },
       error => {

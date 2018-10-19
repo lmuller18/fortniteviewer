@@ -6,20 +6,19 @@ import { FcmService } from '../services/fcm.service';
 import { itemTypes, itemRarities } from '../shared/rarities';
 
 @Component({
-  selector: 'app-upcoming',
-  templateUrl: './upcoming.component.html',
-  styleUrls: ['./upcoming.component.scss'],
+  selector: 'app-subscribed',
+  templateUrl: './subscribed.component.html',
+  styleUrls: ['./subscribed.component.scss'],
   animations: [transitionAnimation]
 })
-export class UpcomingComponent implements OnInit {
-  upcoming: any[];
+export class SubscribedComponent implements OnInit {
+  items: any[];
   loading = true;
 
   filter = false;
   typeFilter = '';
   nameFilter = '';
   rarityFilter = '';
-
   itemTypes = itemTypes;
   itemRarities = itemRarities;
 
@@ -37,22 +36,23 @@ export class UpcomingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUpcoming();
+    this.getSubscriptions();
   }
 
-  getUpcoming() {
-    this.http
-      .get(`https://fortniteapi-c5d8e.firebaseapp.com/upcoming`)
-      .subscribe(
-        (data: any) => {
-          this.upcoming = data.data;
+  getSubscriptions() {
+    this.fcm.getSubscriptionsAsItems().subscribe(
+      (data: any) => {
+        if (data) {
+          console.log('in upcoming: ', data);
+          this.items = data;
           this.loading = false;
-        },
-        err => {
-          console.log(err);
-          this.loading = false;
-        },
-        () => console.log('done loading store')
-      );
+        }
+      },
+      err => {
+        console.log(err);
+        this.loading = false;
+      },
+      () => console.log('done loading subscribed items')
+    );
   }
 }

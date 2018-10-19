@@ -1,0 +1,65 @@
+<div class="loader"
+     *ngIf="loading">
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+<div class="main-content block"
+     *ngIf="!loading"
+     [@transitionAnimation]="">
+
+  <div class="filter-header block">
+    <h1 class="store-type"> Subscribed Items </h1>
+
+    <div>
+      <button mat-raised-button
+              name="Filter"
+              [color]="'primary'"
+              (click)="filter ? filter = false : filter = true">Filter</button>
+    </div>
+  </div>
+
+  <mat-card class="filter-card"
+            *ngIf="filter">
+    <div class="filter-form">
+      <div class="notify">
+        Notify Me of Upcoming
+        <mat-slide-toggle [color]="'primary'">
+        </mat-slide-toggle>
+      </div>
+      <div class="filter-title">Filter Rules</div>
+      <mat-form-field>
+        <input matInput
+               placeholder="Item Name"
+               [(ngModel)]="nameFilter">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Item Type"
+                    [(ngModel)]="typeFilter">
+          <mat-option *ngFor="let type of itemTypes"
+                      [value]="type.key">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Item Rarity"
+                    [(ngModel)]="rarityFilter">
+          <mat-option *ngFor="let type of itemRarities"
+                      [value]="type.key">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-card>
+
+  <div class="block items">
+    <ng-container *ngFor="let item of items | filter:nameFilter:typeFilter:rarityFilter">
+      <app-item [item]="item"></app-item>
+    </ng-container>
+  </div>
+  <div class="disclaimer">
+    <span>All item images provided by
+      <a href="https://www.fnbr.co">fnbr.co</a>
+    </span>
+  </div>
+</div>

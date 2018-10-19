@@ -1,0 +1,40 @@
+.store-type {
+  font-family: 'Luckiest Guy', cursive;
+  font-weight: 500;
+  color: white;
+}
+
+.filter-form {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.filter-form > * {
+  width: 100%;
+}
+
+.filter-form-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notify {
+  display: flex;
+  font-family: 'Nunito Sans', sans-serif;
+  justify-content: space-between;
+}
+
+.filter-title {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  margin-top: 1rem;
+}

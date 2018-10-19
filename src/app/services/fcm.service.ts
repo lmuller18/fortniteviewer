@@ -8,6 +8,7 @@ import { tap } from 'rxjs/operators';
 import * as app from 'firebase';
 import { environment } from '../../environments/environment.prod';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 app.initializeApp(environment.firebase);
 const _messaging = app.messaging();
 _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
@@ -24,7 +25,8 @@ export class FcmService {
     private afMessaging: AngularFireMessaging,
     private afStore: AngularFirestore,
     private fun: AngularFireFunctions,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private http: HttpClient
   ) {}
 
   async makeToast(message) {
@@ -68,6 +70,26 @@ export class FcmService {
 
   getSubscriptions() {
     return this.subscriptions.asObservable();
+  }
+
+  getSubscriptionsAsItems() {
+    const subsAsItems = new BehaviorSubject<any[]>([]);
+    this.getSubscriptions().subscribe(subs => {
+      let items = [];
+      subs.forEach(async sub => {
+        const url = `https://fortniteapi-c5d8e.firebaseapp.com/items?query=${
+          sub.item
+        }&type=${sub.type}`;
+        await this.http.get(url).subscribe(data => {
+          console.log('get data: ', data);
+          items = [...items, (<any>data).data[0]];
+          subsAsItems.next(items);
+        });
+      });
+      console.log(items);
+      return;
+    });
+    return subsAsItems.asObservable();
   }
 
   getIsSubscribed(topic) {

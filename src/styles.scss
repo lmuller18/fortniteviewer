@@ -19,6 +19,11 @@ body {
   box-sizing: border-box;
 }
 
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .main-content {
   background-image: url('./assets/img/tangerine.jpg');
   background-repeat: no-repeat;

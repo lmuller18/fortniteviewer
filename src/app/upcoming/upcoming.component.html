@@ -20,6 +20,12 @@
   <mat-card class="filter-card"
             *ngIf="filter">
     <div class="filter-form">
+      <div class="notify">
+        Notify Me of Upcoming
+        <mat-slide-toggle [color]="'primary'">
+        </mat-slide-toggle>
+      </div>
+      <div class="filter-title">Filter Rules</div>
       <mat-form-field>
         <input matInput
                placeholder="Item Name"

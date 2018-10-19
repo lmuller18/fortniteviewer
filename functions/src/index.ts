@@ -20,7 +20,7 @@ export const unsubscribeFromTopic = functions.https.onCall(
   }
 );
 
-export const sendOnFirestoreCreate = functions.firestore
+export const notifyStore = functions.firestore
   .document('store/{date}')
   .onCreate(async snapshot => {
     const store = snapshot.data();
@@ -49,6 +49,79 @@ export const sendOnFirestoreCreate = functions.firestore
     });
     return;
   });
+
+export const notifyUpcoming = functions.firestore
+  .document('upcoming/{date}')
+  .onUpdate(async snapshot => {
+    const notification: admin.messaging.Notification = {
+      title: `New Upcoming Skins!`,
+      body: `Check out the upcoming tab to see the newest skins.`
+    };
+
+    const icon = 'https://image.fnbr.co/price/icon_vbucks.png';
+
+    const payload: admin.messaging.Message = {
+      notification,
+      webpush: {
+        notification: {
+          vibrate: [200, 100, 200],
+          icon: icon
+        }
+      },
+      topic: `newUpcoming`
+    };
+    return admin.messaging().send(payload);
+  });
+
+export const getNewUpcoming = functions.https.onRequest(async (req, res) => {
+  const options = {
+    url: 'https://fortniteapi-c5d8e.firebaseapp.com/upcoming'
+  };
+
+  await rq.get(options, async (err, response, body) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    const fetched = JSON.parse(body);
+    const upcoming = fetched.data;
+
+    const current = await admin
+      .firestore()
+      .collection('upcoming')
+      .doc('current')
+      .get()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('No such document!');
+          throw new Error('No Current');
+        } else {
+          return doc.data();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        return null;
+      });
+
+    if (!current || current !== upcoming) {
+      await admin
+        .firestore()
+        .collection('upcoming')
+        .doc('current')
+        .set({ items: upcoming })
+        .then(function() {
+          console.log('Document successfully written!');
+        })
+        .catch(function(error) {
+          console.error('Error writing document: ', error);
+        });
+    }
+    res.send(upcoming);
+    return;
+  });
+});
 
 export const getDailyStore = functions.https.onRequest(async (req, res) => {
   const options = {

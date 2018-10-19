@@ -7,7 +7,8 @@ import {
   MatCardModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  MatInputModule
+  MatInputModule,
+  MatSlideToggleModule
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +28,7 @@ export const ROUTES: Routes = [
     MatProgressSpinnerModule,
     MatSelectModule,
     MatInputModule,
+    MatSlideToggleModule,
     HttpClientModule,
     FormsModule,
     SharedModule

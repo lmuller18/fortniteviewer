@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
 import { transitionAnimation } from '../transition.animation';
+import { FcmService } from '../services/fcm.service';
 
 @Component({
   selector: 'app-upcoming',
@@ -17,6 +18,7 @@ export class UpcomingComponent implements OnInit {
   typeFilter = '';
   nameFilter = '';
   rarityFilter = '';
+
   itemTypes = [
     {
       key: '',
@@ -94,7 +96,11 @@ export class UpcomingComponent implements OnInit {
     }
   ];
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public fcm: FcmService
+  ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         (<any>window).ga('set', 'page', event.urlAfterRedirects);

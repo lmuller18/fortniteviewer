@@ -56,7 +56,9 @@ export class FcmService {
       .doc(this.token)
       .valueChanges()
       .subscribe(doc => {
-        this.subscriptions.next((<any>doc).subscriptions);
+        if (doc) {
+          this.subscriptions.next((<any>doc).subscriptions);
+        }
       });
   }
 

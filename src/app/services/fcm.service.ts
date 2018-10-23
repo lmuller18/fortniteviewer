@@ -40,15 +40,7 @@ export class FcmService {
       () => {
         this.afMessaging.getToken.subscribe(token => {
           this.token = token;
-          this.afStore
-            .collection('tokens')
-            .doc(this.token)
-            .get()
-            .subscribe(doc => {
-              if (doc.exists) {
-                this.subscriptions.next(doc.data().subscriptions);
-              }
-            });
+          this.createSubscription();
         });
         console.log('Permission granted!');
       },
@@ -56,6 +48,16 @@ export class FcmService {
         console.error(error);
       }
     );
+  }
+
+  createSubscription() {
+    this.afStore
+      .collection('tokens')
+      .doc(this.token)
+      .valueChanges()
+      .subscribe(doc => {
+        this.subscriptions.next((<any>doc).subscriptions);
+      });
   }
 
   showMessage() {
@@ -81,12 +83,10 @@ export class FcmService {
           sub.item
         }&type=${sub.type}`;
         await this.http.get(url).subscribe(data => {
-          console.log('get data: ', data);
           items = [...items, (<any>data).data[0]];
           subsAsItems.next(items);
         });
       });
-      console.log(items);
       return;
     });
     return subsAsItems.asObservable();

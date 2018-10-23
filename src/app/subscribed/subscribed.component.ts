@@ -43,7 +43,6 @@ export class SubscribedComponent implements OnInit {
     this.fcm.getSubscriptionsAsItems().subscribe(
       (data: any) => {
         if (data) {
-          console.log('in upcoming: ', data);
           this.items = data;
           this.loading = false;
         }

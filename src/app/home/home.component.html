@@ -6,18 +6,20 @@
     <h1 class="title"> Top Links </h1>
   </div>
 
-  <div class="card-container block"
-       *ngFor="let link of links">
-    <div class="container block"
-         (click)="navigate(link.link)">
-      <img alt="site"
-           [src]="link.image"
-           class="stream-img">
-      <div class="details-overlay">
-        <div class="details">
-          <div class="name">{{ link.name }}</div>
-          <div class="status-container">
-            <div class="stream-status">{{ link.description }}</div>
+  <div class="links-container">
+    <div class="card-container block"
+         *ngFor="let link of links">
+      <div class="container block"
+           (click)="navigate(link.link)">
+        <img alt="site"
+             [src]="link.image"
+             class="stream-img">
+        <div class="details-overlay">
+          <div class="details">
+            <div class="name">{{ link.name }}</div>
+            <div class="status-container">
+              <div class="stream-status">{{ link.description }}</div>
+            </div>
           </div>
         </div>
       </div>

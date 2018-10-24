@@ -31,57 +31,63 @@
     color: white;
   }
 
-  .card-container {
+  .links-container {
     display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-    font-family: 'Nunito Sans', sans-serif;
-    color: white;
+    flex-wrap: wrap;
 
-    .container {
-      position: relative;
-      cursor: pointer;
+    .card-container {
+      display: flex;
+      flex: 1 1 50%;
+      justify-content: center;
+      margin-bottom: 2rem;
+      font-family: 'Nunito Sans', sans-serif;
+      color: white;
 
-      .stream-img {
-        display: block;
-        width: 100%;
-        max-width: 700px;
-        @media (max-width: 716px) {
-          max-width: 90vw;
-        }
-        height: auto;
-      }
+      .container {
+        position: relative;
+        cursor: pointer;
 
-      .details-overlay {
-        position: absolute;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5); /* Black see-through */
-        width: 100%;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-
-        .details {
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-
-          .name {
-            font-weight: bold;
-            font-size: 18px;
-            text-align: center;
-            padding-bottom: 0.5rem;
+        .stream-img {
+          display: block;
+          width: 100%;
+          max-width: 700px;
+          @media (max-width: 716px) {
+            max-width: 90vw;
           }
+          height: auto;
+        }
 
-          .status-container {
+        .details-overlay {
+          position: absolute;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.5); /* Black see-through */
+          width: 100%;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+
+          .details {
             display: flex;
             justify-content: center;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
 
-            .stream-status {
-              margin-bottom: 2.5px;
-              font-size: 11px;
+            .name {
+              font-weight: bold;
+              font-size: 18px;
+              text-align: center;
+              padding-bottom: 0.5rem;
+            }
+
+            .status-container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              .stream-status {
+                margin-bottom: 2.5px;
+                font-size: 11px;
+              }
             }
           }
         }

@@ -7,7 +7,8 @@
   <app-error [error]="error"></app-error>
 </div>
 
-<div *ngIf="!loading && !error">
+<div class="main-content player-content"
+     *ngIf="!loading && !error">
   <mat-tab-group mat-stretch-tabs
                  headerPosition="below"
                  [backgroundColor]="'primary'"
@@ -15,30 +16,24 @@
     <ng-container *ngFor="let group of groups">
       <mat-tab [label]="group">
         <div class="player-tab-content">
+          <div class="victory-royale-container">
+            <img alt="fortnite wallpaper"
+                 [src]="player[group].wallpaper"
+                 class="victory-royale-image">
+            <div class="victory-royale-overlay">
+              <div class="victory-royale-text">
+                {{ player[group][0].key | camelCase }}: {{player[group][0].value}}
+              </div>
+            </div>
+          </div>
           <mat-grid-list cols="2"
                          rowHeight="70px">
-            <mat-grid-tile *ngFor="let tile of player[group]; let i = index"
-                           [colspan]="i === 0 ? 2 : 1"
-                           [rowspan]="i === 0 ? 4 : 1">
-
-              <ng-container *ngIf="i === 0; else stat">
-                <div class="victory-royale-container">
-                  <img alt="fortnite wallpaper"
-                       [src]="player[group].wallpaper"
-                       class="victory-royale-image">
-                  <div class="victory-royale-overlay">
-                    <div class="victory-royale-text">
-                      {{ tile.key | camelCase }}: {{tile.value}}
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-
-              <ng-template #stat>
-                <mat-card>
-                  <p>{{ tile.key | camelCase }}: {{tile.value}}</p>
-                </mat-card>
-              </ng-template>
+            <mat-grid-tile *ngFor="let tile of player[group].slice(1, player[group].length)"
+                           [colspan]="1"
+                           [rowspan]="1">
+              <mat-card>
+                <p>{{ tile.key | camelCase }}: {{tile.value}}</p>
+              </mat-card>
             </mat-grid-tile>
           </mat-grid-list>
         </div>

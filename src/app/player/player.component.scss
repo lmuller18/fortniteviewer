@@ -1,12 +1,17 @@
-::ng-deep .mat-tab-group {
-  margin: 2rem 0 4rem 0 !important;
-}
+// ::ng-deep .mat-tab-group {
+//   margin: 2rem 0 4rem 0 !important;
+// }
 
 ::ng-deep .mat-tab-header {
   z-index: 999;
   width: 100vw;
   position: fixed !important;
   bottom: 0;
+}
+
+.player-content {
+  padding: 0;
+  padding-bottom: 48px;
 }
 
 mat-card.mat-card {
@@ -21,8 +26,8 @@ mat-card.mat-card {
 }
 
 .victory-royale-container {
-  position: absolute;
-  top: 24px;
+  position: relative;
+  top: 0;
   width: 100%;
 }
 
@@ -30,6 +35,9 @@ mat-card.mat-card {
   display: block;
   width: 100%;
   height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .victory-royale-overlay {

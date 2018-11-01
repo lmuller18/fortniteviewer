@@ -9,10 +9,12 @@ import * as app from 'firebase';
 import { environment } from '../../environments/environment.prod';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-app.initializeApp(environment.firebase);
-const _messaging = app.messaging();
-_messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
-_messaging.onMessage = _messaging.onMessage.bind(_messaging);
+if (app.messaging.isSupported()) {
+  app.initializeApp(environment.firebase);
+  const _messaging = app.messaging();
+  _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
+  _messaging.onMessage = _messaging.onMessage.bind(_messaging);
+}
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,9 @@ export class FcmService {
   }
 
   getPermission() {
+    if (!app.messaging.isSupported()) {
+      return;
+    }
     this.afMessaging.requestPermission.subscribe(
       () => {
         this.afMessaging.getToken.subscribe(token => {

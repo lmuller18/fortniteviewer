@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import * as Hammer from 'hammerjs';
 import { MatSidenav, MatIconRegistry } from '@angular/material';
 import { FcmService } from './services/fcm.service';
+import { messaging } from 'firebase';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,7 +38,9 @@ export class AppComponent {
         '../assets/icons/trophy.svg'
       )
     );
-    fcm.getPermission();
-    fcm.showMessage().subscribe();
+    if (messaging.isSupported()) {
+      fcm.getPermission();
+      fcm.showMessage().subscribe();
+    }
   }
 }

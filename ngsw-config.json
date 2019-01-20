@@ -16,10 +16,7 @@
           "/assets/img/tangerine.jpg"
         ],
         "urls": [
-          "https://fonts.googleapis.com/icon?family=Material+Icons",
-          "https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700",
-          "https://fonts.googleapis.com/css?family=Luckiest+Guy",
-          "https://fonts.googleapis.com/css?family=Roboto+Mono"
+          "https://fonts.googleapis.com/css?family=Luckiest+Guy|Nunito+Sans"
         ]
       }
     },

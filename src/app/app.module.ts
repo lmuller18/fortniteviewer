@@ -27,7 +27,6 @@ import { HomeModule } from './home/home.module';
 import { SubscribedModule } from './subscribed/subscribed.module';
 
 import { AngularFireModule } from '@angular/fire';
-import * as firebase from 'firebase';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFirestoreModule } from '@angular/fire/firestore';

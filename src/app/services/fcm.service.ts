@@ -5,16 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material';
 import { tap } from 'rxjs/operators';
 
-import * as app from 'firebase';
-import { environment } from '../../environments/environment.prod';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-if (app.messaging.isSupported()) {
-  app.initializeApp(environment.firebase);
-  const _messaging = app.messaging();
-  _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
-  _messaging.onMessage = _messaging.onMessage.bind(_messaging);
-}
 
 @Injectable({
   providedIn: 'root'
@@ -38,21 +30,22 @@ export class FcmService {
   }
 
   getPermission() {
-    if (!app.messaging.isSupported()) {
-      return;
+    try {
+      this.afMessaging.requestPermission.subscribe(
+        () => {
+          this.afMessaging.getToken.subscribe(token => {
+            this.token = token;
+            this.createSubscription();
+          });
+          console.log('Permission granted!');
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    } catch (e) {
+      console.log('Unable to request permission', e);
     }
-    this.afMessaging.requestPermission.subscribe(
-      () => {
-        this.afMessaging.getToken.subscribe(token => {
-          this.token = token;
-          this.createSubscription();
-        });
-        console.log('Permission granted!');
-      },
-      error => {
-        console.error(error);
-      }
-    );
   }
 
   createSubscription() {
@@ -68,13 +61,17 @@ export class FcmService {
   }
 
   showMessage() {
-    return this.afMessaging.messages.pipe(
-      tap(msg => {
-        const body: any = (msg as any).notification.body;
-        console.log('notification', body);
-        this.makeToast(body);
-      })
-    );
+    try {
+      return this.afMessaging.messages.pipe(
+        tap(msg => {
+          const body: any = (msg as any).notification.body;
+          console.log('notification', body);
+          this.makeToast(body);
+        })
+      );
+    } catch (e) {
+      console.log('Unable to listen for messages');
+    }
   }
 
   getSubscriptions() {
